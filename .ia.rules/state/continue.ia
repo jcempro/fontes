@@ -3,7 +3,7 @@
 ## FT-013 — Norma de sugestão para inclusão de Livro
 
 - tipo: `implementacao_normativa`
-- estado: `em andamento`
+- estado: `concluído`
 - criado_em: `2026-07-25T21:17:16-03:00`
 - origem: solicitação humana desta tarefa
 - autoridade: `RCF.md`
@@ -23,10 +23,10 @@
 
 - objetivo: produzir e validar a norma subordinada.
 - dependencia: Etapa 1/2.
-- tarefa 1/3: mapear todas as propriedades e todos os domínios de valores.
-- tarefa 2/3: definir obtenção por EPUB/PDF em Node.js e Python sem criar dependência normativa.
-- tarefa 3/3: validar agnosticismo JSON/YAML, cobertura e ausência de contradição não delimitada.
-- estado: `em andamento`.
+- tarefa 1/3: mapear todas as propriedades e todos os domínios de valores — `concluído`.
+- tarefa 2/3: definir obtenção por EPUB/PDF em Node.js e Python sem criar dependência normativa — `concluído`.
+- tarefa 3/3: validar agnosticismo JSON/YAML, cobertura e ausência de contradição não delimitada — `concluído`.
+- estado: `concluído`.
 
 ### Decisões preservadas
 
@@ -37,6 +37,8 @@
 
 ### Retomada
 
-- próximo_passo: criar `docs/norma-sugestao-inclusao-livro.md`.
-- validacao_pendente: matriz de cobertura das propriedades; equivalência semântica JSON/YAML; revisão dos vínculos ao RCF.
+- resultado: `docs/norma-sugestao-inclusao-livro.md`.
+- validacao: exemplos JSON/YAML analisados com igualdade profunda; 6 chaves raiz, 7 chaves de Livro, 2 Hashes Globais, 4 assets e 2 fontes; cobertura estrutural e vínculos ao RCF revisados.
+- próximo_passo: nenhum; eventual parser, template ou workflow exige FT `implementacao_codigo` distinta e nova autorização humana explícita.
+- validacao_pendente: nenhuma.
 - bloqueio: nenhum.
