@@ -86,3 +86,43 @@
 - próximo_passo: nenhum; eventual implementação exige FT `implementacao_codigo` distinta e autorização humana explícita.
 - validacao_pendente: nenhuma.
 - bloqueio: nenhum.
+
+## FT-015 — URLs vinculadas às variantes da sugestão de Livro
+
+- tipo: `implementacao_normativa`
+- estado: `em_andamento`
+- criado_em: `2026-07-26T00:00:00-03:00`
+- origem: solicitação humana de correção da norma criada nas FT-013 e FT-014
+- autoridade: `RCF.md`
+- objetivo: acrescentar ao perfil formativo a propriedade raiz obrigatória `urls`, vinculando explicitamente cada URL indicada ao formato editorial correspondente.
+- escopo: estrutura, obrigatoriedade, cardinalidade, domínio, obtenção, validação segura, correlação com `global_hashes` e equivalência JSON/YAML de `urls`.
+- fora_de_escopo: alterar `RCF.md`; acrescentar `urls` ao `metadata.json` canônico; implementar parser, template, workflow, importação, geração de asset, download ou publicação.
+- dependencias: FT-014 concluída; nenhuma FT técnica.
+
+### Etapa 1/2 — Delimitação
+
+- objetivo: distinguir URL formativa de entrada das propriedades canônicas de assets e fontes.
+- dependencia: FT-014.
+- tarefa 1/1: definir `urls` como lista de objetos `format + url`, sem colisão com o schema 5 — `concluído`.
+- estado: `concluído`.
+
+### Etapa 2/2 — Refatoração documental
+
+- objetivo: normatizar integralmente `urls` no documento formativo.
+- dependencia: Etapa 1/2.
+- tarefa 1/3: atualizar allowlist, matriz e exemplos JSON/YAML — `em_andamento`.
+- tarefa 2/3: definir obtenção, segurança, equivalência e vínculo com Hash Global — `pendente`.
+- tarefa 3/3: validar chaves exatas e igualdade profunda dos exemplos — `pendente`.
+- estado: `em_andamento`.
+
+### Allowlist normativa
+
+- raiz: `book`, `urls`, `global_hashes`.
+- `urls[]`: `format`, `url`.
+
+### Retomada
+
+- resultado esperado: `docs/norma-sugestao-inclusao-livro.md` com URLs explícitas por variante.
+- próximo_passo: concluir a norma e executar validações documentais.
+- validacao_pendente: estrutura, exemplos e consistência com `RCF-IF-DATA-015..025`.
+- bloqueio: nenhum.
