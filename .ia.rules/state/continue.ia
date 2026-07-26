@@ -46,7 +46,7 @@
 ## FT-014 — Redução estrita da norma de sugestão de Livro
 
 - tipo: `implementacao_normativa`
-- estado: `em andamento`
+- estado: `concluído`
 - criado_em: `2026-07-25T21:43:12-03:00`
 - origem: solicitação humana de refatoração da norma criada na FT-013
 - autoridade: `RCF.md`
@@ -66,10 +66,10 @@
 
 - objetivo: substituir a norma anterior por uma norma exclusivamente formativa do subconjunto autorizado.
 - dependencia: Etapa 1/2.
-- tarefa 1/3: remover toda propriedade, regra e exemplo externo à allowlist.
-- tarefa 2/3: preservar obtenção segura e evidência editorial apenas para os campos autorizados.
-- tarefa 3/3: validar chaves exatas e equivalência profunda dos exemplos JSON/YAML.
-- estado: `em andamento`.
+- tarefa 1/3: remover toda propriedade, regra e exemplo externo à allowlist — `concluído`.
+- tarefa 2/3: preservar obtenção segura e evidência editorial apenas para os campos autorizados — `concluído`.
+- tarefa 3/3: validar chaves exatas e equivalência profunda dos exemplos JSON/YAML — `concluído`.
+- estado: `concluído`.
 
 ### Allowlist normativa
 
@@ -81,6 +81,8 @@
 
 ### Retomada
 
-- próximo_passo: refatorar `docs/norma-sugestao-inclusao-livro.md`.
-- validacao_pendente: nenhuma chave externa; JSON/YAML equivalentes; propriedades obrigatórias e opcionais delimitadas.
+- resultado: `docs/norma-sugestao-inclusao-livro.md` restringido ao perfil formativo solicitado.
+- validacao: exemplos JSON/YAML profundamente iguais; raiz com 2 chaves; `book` com 6; contribuidor com 2; `edition` vazio; Hash Global com 4; nenhum nome de propriedade removida presente.
+- próximo_passo: nenhum; eventual implementação exige FT `implementacao_codigo` distinta e autorização humana explícita.
+- validacao_pendente: nenhuma.
 - bloqueio: nenhum.
