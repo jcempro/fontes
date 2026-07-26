@@ -1,0 +1,42 @@
+# Estado operacional canônico
+
+## FT-013 — Norma de sugestão para inclusão de Livro
+
+- tipo: `implementacao_normativa`
+- estado: `em andamento`
+- criado_em: `2026-07-25T21:17:16-03:00`
+- origem: solicitação humana desta tarefa
+- autoridade: `RCF.md`
+- objetivo: definir, em documento separado sob `docs/`, o contrato integral e agnóstico entre JSON e YAML para uma sugestão de inclusão de Livro compatível com o `metadata.json` schema 5.
+- escopo: propriedades, obrigatoriedade estrutural, nulabilidade, tipos, cardinalidades, domínios de valores, obtenção por evidência, precedência, validação e falha segura.
+- fora_de_escopo: alterar `RCF.md`, implementar parser, alterar template ou workflow de Issue, importar Livro, gerar assets, publicar metadado ou executar código.
+- dependencias: nenhuma FT técnica; eventual implementação exigirá FT `implementacao_codigo` distinta e nova autorização humana explícita.
+
+### Etapa 1/2 — Conciliação
+
+- objetivo: registrar e conciliar a solicitação com o RCF vigente.
+- dependencia: nenhuma.
+- tarefa 1/1: identificar limites do schema 5 e distinguir sugestão de Issue, fonte remota, asset preservado, Hash Global e Hash da Fonte.
+- estado: `concluído`.
+
+### Etapa 2/2 — Norma documental
+
+- objetivo: produzir e validar a norma subordinada.
+- dependencia: Etapa 1/2.
+- tarefa 1/3: mapear todas as propriedades e todos os domínios de valores.
+- tarefa 2/3: definir obtenção por EPUB/PDF em Node.js e Python sem criar dependência normativa.
+- tarefa 3/3: validar agnosticismo JSON/YAML, cobertura e ausência de contradição não delimitada.
+- estado: `em andamento`.
+
+### Decisões preservadas
+
+- A Issue constitui sugestão não confiável e NÃO autoriza alteração direta de metadado ou publicação.
+- Toda chave do modelo existe nas representações JSON e YAML; ausência informativa usa somente o valor vazio ou nulo autorizado para a propriedade.
+- `assets` descreve o arquivo servido; `sources` descreve a fonte consultada e referencia o asset preservado por `asset_id`.
+- O exemplo recebido usa caminho local em `sources.url`, em tensão com `RCF-IF-DATA-019`; a norma subordinada preservará a exigência HTTP(S) do RCF.
+
+### Retomada
+
+- próximo_passo: criar `docs/norma-sugestao-inclusao-livro.md`.
+- validacao_pendente: matriz de cobertura das propriedades; equivalência semântica JSON/YAML; revisão dos vínculos ao RCF.
+- bloqueio: nenhum.
