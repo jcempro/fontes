@@ -12,7 +12,7 @@ A interface pública mantém rotas canônicas `/d/`, aliases curtos `/` com dom�
 
 ## Como indicar URLs de publicações
 
-As formas simples de envio por Issue estão documentadas em [Como Indicar URLs de Publicações](docs/indicar-fontes.md), com exemplos em texto livre, Markdown, JSON e YAML.
+As formas simples de envio por Issue estão documentadas em [Como Indicar URLs de Publicações](docs/indicar-fontes.md), com exemplos em texto livre, Markdown, JSON e YAML. Para sugestões formativas com dados do livro e hashes globais, consulte a [Norma de Dados Formativos para Sugestão de Livro](docs/norma-sugestao-inclusao-livro.md).
 
 O QR Code é gerado no build com a biblioteca MIT `qrcode` (`node-qrcode`), escolhida por suporte oficial a SVG, `errorCorrectionLevel`, compatibilidade Node `>=10.13.0`, uso em servidor/cliente e dependência proporcional.
 

@@ -53,6 +53,8 @@ O Grande Conflito:
 
 ## JSON opcional
 
+Para incluir dados formativos do livro e hashes globais em JSON, siga a [Norma de Dados Formativos para Sugestão de Livro](norma-sugestao-inclusao-livro.md).
+
 ```json
 {
   "publications": [
@@ -68,6 +70,8 @@ O Grande Conflito:
 ```
 
 ## YAML opcional
+
+Para incluir dados formativos do livro e hashes globais em YAML, siga a [Norma de Dados Formativos para Sugestão de Livro](norma-sugestao-inclusao-livro.md).
 
 ```yaml
 publications:
