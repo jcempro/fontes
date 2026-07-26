@@ -49,6 +49,34 @@
         "algorithm": "SHA-512",
         "value": "1c0399cca06a91d0ccf43d60068398c24830e756b4eb655d9eb0d38c19c995434ea8a74cc6bd6b05e77708750ffcfcdde130fce6cc736a5da9cf457e86e9e490"
       }
+    },
+    {
+      "id": "egw-writings-pdf",
+      "title": "egwwritings.org",
+      "url": "https://media4.egwwritings.org/pdf/en_SA.pdf",
+      "origin_url": "https://media4.egwwritings.org/pdf/en_SA.pdf",
+      "provider": "egw-writings",
+      "type": "equivalent-source",
+      "format": "pdf",
+      "hashes": {
+        "sha1": "d1b5dd8d7aca3d4f0a9d884b38c9aeace44a6920",
+        "sha256": "565a6d78cc2a4b9324a9bad7e578233e39849b609ae30e0c075ff3738ea48360",
+        "sha512": "1c0399cca06a91d0ccf43d60068398c24830e756b4eb655d9eb0d38c19c995434ea8a74cc6bd6b05e77708750ffcfcdde130fce6cc736a5da9cf457e86e9e490"
+      }
+    },
+    {
+      "id": "egw-writings-pdf-2",
+      "title": "egwwritings.org",
+      "url": "https://media2.egwwritings.org/pdf/en_SA.pdf",
+      "origin_url": "https://media2.egwwritings.org/pdf/en_SA.pdf",
+      "provider": "egw-writings",
+      "type": "equivalent-source",
+      "format": "pdf",
+      "hashes": {
+        "sha1": "d1b5dd8d7aca3d4f0a9d884b38c9aeace44a6920",
+        "sha256": "565a6d78cc2a4b9324a9bad7e578233e39849b609ae30e0c075ff3738ea48360",
+        "sha512": "1c0399cca06a91d0ccf43d60068398c24830e756b4eb655d9eb0d38c19c995434ea8a74cc6bd6b05e77708750ffcfcdde130fce6cc736a5da9cf457e86e9e490"
+      }
     }
   ]
 }
