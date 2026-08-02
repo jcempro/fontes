@@ -58,3 +58,41 @@
   - Se aprovada, centralizar geração, roteamento, carregamento e validação dos segmentos; atualizar todos os consumidores aplicáveis; manter retrocompatibilidade durante a migração; adicionar testes de equivalência, integridade, cache, ausência de segmento, atualização, conexão lenta e regressão.
 
   - Concluir somente quando os resultados permanecerem equivalentes aos atuais e os benchmarks comprovarem redução material de atraso ou tráfego sem regressão líquida.
+
+* [ ] Ampliar a ingestão de (multiplas) publicações por conteúdo direto, anexo ou fonte remota
+  - Preservar os formatos atuais de solicitação por Issue/TO-DO e permitir, para JSON, YAML, TXT ou equivalente:
+    - conteúdo inserido diretamente;
+    - arquivo anexado, implementando o suporte se inexistente;
+    - URL de arquivo (yaml/json/txt) remoto contendo URLs e metadados das publicações.
+
+  O conteúdo do yaml/json/txt deve seguir o já normatizado no RCF sem o contradizer, considerando aprimoramentos que não regridam...
+  - A obtenção remota DEVE validar protocolo, redirecionamentos, domínio quando aplicável, tamanho, timeout, formato e conteúdo; impedir SSRF, acesso a recursos locais, downloads ilimitados e interpretação de conteúdo incompatível.
+  - O parser DEVE:
+    - percorrer recursivamente objetos, listas e estruturas aninhadas;
+    - reconhecer publicações mesmo fora do modelo recomendado;
+    - tolerar agrupamentos distintos, metadados adicionais e aliases inequívocos;
+    - extrair múltiplas publicações do mesmo documento;
+    - não inferir campos ambíguos nem confundir chaves semanticamente incompatíveis;
+    - registrar itens ignorados e exigir resolução quando a correspondência não for segura.
+
+  - Permitir opcionalmente um **mapa estrutural** JSON/YAML que associe campos externos aos campos de ingestão do repositório, inclusive por caminhos aninhados, listas e estruturas repetidas. O mapa DEVE ser validado, determinístico e incapaz de executar código ou alterar contratos internos.
+
+  - Dados externos constituem entrada candidata, NÃO fonte normativa do repositório:
+    - IDs, códigos, _short URLs_, tags, categorias, estados e relações externas NÃO DEVEM ser assimilados como identificadores internos;
+    - o repositório DEVE detectar publicação existente, deduplicar, compatibilizar ou criar registros e administrar seus próprios IDs, códigos, _short URLs_, tags e relações;
+    - título, autor, URL de PDF/EPUB e capa PODEM ser importados, mas DEVEM ser normalizados, validados e conciliados com o estado canônico;
+    - campos desconhecidos DEVEM ser ignorados ou preservados apenas em área explicitamente destinada a metadados externos, nunca convertidos silenciosamente em regras internas.
+
+  - Centralizar obtenção, parsing, mapeamento, normalização, validação, deduplicação e incorporação para todos os canais de entrada.
+
+  - Normatizar no RCF:
+    - formatos e canais aceitos;
+    - descoberta recursiva;
+    - contrato do mapa estrutural;
+    - aliases permitidos;
+    - precedência e autoridade dos dados;
+    - tratamento de ambiguidades, duplicidades e campos externos.
+
+  - Documentar sucintamente exemplos de conteúdo direto, anexo, URL remota, estruturas aninhadas e mapa estrutural personalizado.
+
+  - Validar com estruturas padrão, profundamente aninhadas, heterogêneas, mapeadas, ambíguas, malformadas, remotas, duplicadas e contendo identificadores externos conflitantes.
