@@ -24,10 +24,37 @@
     - O mecanismo vigente de desambiguação PODE ser preservado apenas no que for compatível com esta precedência, com a minimização dos qualificadores e com a unicidade global.
     - A alteração NÃO DEVE alcançar regras, formatos ou partes do script sem relação direta com a ordem de indexação, a reconstrução dos índices ou a geração e desambiguação das `shortURLs`.
     - Validar que todas as `shortURLs` tenham sido recalculadas, sejam únicas e determinísticas; que `pt-BR` sempre retenha a forma preferencial em colisões; e que cada qualificador linguístico seja o menor capaz de desambiguar seu destino.
-    
   - Após a migração, localizar e corrigir todos os assets que contenham, codifiquem, representem ou apontem para `shortURLs` antigas, incluindo QR Codes, imagens, metadados, manifests, índices, arquivos gerados, documentos e recursos equivalentes.
   - Assets derivados DEVEM ser regenerados a partir da `shortURL` canônica atual, e não alterados apenas visualmente ou por substituição textual quando isso puder produzir conteúdo inválido.
   - Normatizar e implementar coerência contínua e verificável entre `code`, `shortURL` e respectivos assets: qualquer criação, alteração, reatribuição ou remoção de um desses elementos DEVE atualizar ou invalidar atomicamente os demais.
   - A validação DEVE detectar `code` divergente, URL obsoleta, asset ausente, QR Code inválido, destino incorreto, referência ao formato legado ou qualquer descasamento entre fonte canônica e artefato derivado.
   - Sempre que possível, centralizar a geração em uma única fonte canônica e automatizar atualização e validação por scripts, hooks ou workflows já previstos, impedindo recorrência do descasamento e reduzindo processamento manual ou pela IA.
   - Não ampliar o escopo além da migração, da correção integral dos assets, da coerência normativa associada e das FTs em andamento necessárias à conclusão segura.
+
+* [ ] Avaliar e, somente se houver ganho líquido comprovável, segmentar os índices para carregamento sob demanda
+  - Preservar integralmente a arquitetura, aderência, determinismo e otimizações atuais de banco de dados, pesquisa e indexação, inclusive para _short URLs_ e demais modalidades. A segmentação NÃO DEVE substituir o método vigente, apenas complementá-lo quando tecnicamente vantajosa.
+
+  - Inspecionar o fluxo real de geração, publicação, seleção, download, cache, invalidação e consulta dos índices; medir tamanho, latência, número de requisições, repetição de downloads, custo de processamento, desempenho em conexões lentas e impacto sobre cliente, servidor, build e manutenção.
+
+  - Avaliar índices menores, selecionados deterministicamente pela consulta, incluindo:
+    - _short URLs_: particionamento por primeira letra (`26` bases) ou pelas duas primeiras (`676` bases), considerando distribuição real, tamanho, granularidade, quantidade de publicações e custo HTTP;
+    - títulos: índice ou mapa compacto de termos significativos, normalizados e sem palavras de ligação/_stopwords_, apontando apenas para os segmentos necessários;
+    - demais pesquisas: estratégias análogas compatíveis com sua semântica, sem presumir que o mesmo particionamento seja adequado.
+
+  - A solução DEVE considerar:
+    - manifesto mínimo para localizar e versionar segmentos;
+    - carregamento dinâmico somente das bases necessárias;
+    - cache e deduplicação de requisições;
+    - invalidação e atualização determinísticas;
+    - distribuição equilibrada ou tratamento de segmentos desproporcionais;
+    - normalização de caracteres, siglas, números, acentos e consultas incompletas;
+    - fallback compatível com o índice atual;
+    - ausência de perda funcional, resultados divergentes ou aumento relevante de complexidade.
+
+  - Comparar objetivamente o modelo atual e as alternativas por benchmarks representativos, incluindo conexão lenta, cache frio/quente, consultas comuns e pior caso. Considerar bytes transferidos, tempo até o primeiro resultado, latência total, requisições, memória, CPU, tamanho agregado, build e manutenção.
+
+  - Implementar somente quando o ganho potencial líquido for material e superar os custos de fragmentação, manifesto, múltiplas requisições, cache, atualização e complexidade operacional. Caso contrário, preservar o método atual e registrar sucintamente a conclusão.
+
+  - Se aprovada, centralizar geração, roteamento, carregamento e validação dos segmentos; atualizar todos os consumidores aplicáveis; manter retrocompatibilidade durante a migração; adicionar testes de equivalência, integridade, cache, ausência de segmento, atualização, conexão lenta e regressão.
+
+  - Concluir somente quando os resultados permanecerem equivalentes aos atuais e os benchmarks comprovarem redução material de atraso ou tráfego sem regressão líquida.
