@@ -20,6 +20,8 @@
     "test:ui": "node scripts/test-ui.mjs && node scripts/test-dev-live.mjs",
     "test:maintenance": "node scripts/test-egw-maintenance.mjs",
     "test:issue-intake": "node scripts/test-issue-source-intake.mjs",
+    "test:workflows": "node scripts/validate-workflows.mjs --self-test",
+    "validate:workflows": "node scripts/validate-workflows.mjs",
     "egw:import": "node scripts/import-egw.mjs",
     "egw:validate": "node scripts/import-egw.mjs --check",
     "egw:audit-text": "node scripts/import-egw.mjs --audit-text",
@@ -128,6 +130,7 @@
     "qrcode": "^1.5.4",
     "sass": "^1.101.0",
     "sharp": "^0.35.3",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "yaml": "^2.9.0"
   }
 }

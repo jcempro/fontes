@@ -36,12 +36,20 @@
 ## FT-017 — Validação estrutural dos workflows
 
 - tipo: `implementacao_codigo`
-- estado: `pendente_autorizacao`
+- estado: `concluído`
 - criado_em: `2026-08-02T22:21:16-03:00`
 - origem: frente de workflow da `FT-016`.
 - objetivo: corrigir a invalidade de `source-intake.yml` e integrar validação preventiva determinística de workflows.
 - dependencias: `FT-016` concluída e autorização humana explícita.
 - aceite: sintaxe YAML, schema/semântica GitHub Actions e `actionlint` ou equivalente válidos, com diagnóstico local de arquivo e linha.
+
+### Execução FT-017
+
+- autorização: solicitação humana de implementar FT-017 a FT-019 nesta tarefa.
+- causa: o escalar simples de `jobs.intake.if` continha `: ` dentro da expressão e era encerrado invalidamente pelo parser YAML.
+- resultado: condição convertida em bloco escalar; workflows Node convergidos para 24; parser YAML seguro e validador semântico local adicionados em fonte TypeScript e artefato JavaScript.
+- validação: `WORKFLOW_OK files=3 parser=yaml semantic=github-actions/v1` em modo normal e self-test; fixture inválida detectada na linha 6; `git diff --check` válido.
+- bloqueio: nenhum.
 
 ## FT-018 — Reconstrução canônica de URLs curtas e assets
 
