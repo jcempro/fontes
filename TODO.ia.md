@@ -1,4 +1,4 @@
-- [ ] Equalizar e executar as TO-DOs como frentes convergentes de um único objetivo
+- [ ] [equalizer] Equalizar e executar as TO-DOs como frentes convergentes de um único objetivo
   - Este item rege todas as demais TO-DOs. Cada uma DEVE ser tratada como frente complementar de uma única execução, conciliada com as demais e convergente ao objetivo principal do projeto.
 
   - Contradições aparentes DEVEM ser presumidas como imprecisão redacional e resolvidas por equalização, sem perda de intenção, requisito, restrição ou nuance. Havendo evidência de conflito material não solucionável pelas normas e pelo contexto, o desenvolvedor DEVE ser consultado.
