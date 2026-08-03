@@ -1,30 +1,30 @@
 - [ ] Equalizar e executar as TO-DOs como frentes convergentes de um único objetivo
-  - Este item rege a execução de todas as TO-DOs. Cada uma DEVE ser tratada como frente complementar de uma única implementação, conciliada com as demais e orientada ao objetivo principal do projeto.
+  - Este item rege todas as demais TO-DOs. Cada uma DEVE ser tratada como frente complementar de uma única execução, conciliada com as demais e convergente ao objetivo principal do projeto.
 
-  - Contradições aparentes entre TO-DOs DEVEM ser interpretadas, salvo evidência contrária (questione o dev. neste caso), como imprecisão de redação do desenvolvedor e resolvidas por equalização sem perda de intenção, requisito ou nuance.
+  - Contradições aparentes DEVEM ser presumidas como imprecisão redacional e resolvidas por equalização, sem perda de intenção, requisito, restrição ou nuance. Havendo evidência de conflito material não solucionável pelas normas e pelo contexto, o desenvolvedor DEVE ser consultado.
 
-  - O RCF vigente prevalece e `/agents.md` prevalece em absoluto. Toda alteração DEVE aprimorar o projeto, evoluir capacidade e recursos, preservar compatibilidade e força normativa e NÃO PODE introduzir regressão.
+  - O `AGENTS.md` prevalece absolutamente; o RCF vigente prevalece sobre as demais fontes subordinadas. Toda alteração DEVE aprimorar o projeto, ampliar capacidades e recursos, preservar compatibilidade e força normativa e NÃO PODE introduzir regressão.
 
   - Antes de executar qualquer TO-DO:
     1. ler integralmente todas as TO-DOs e normas aplicáveis;
-    2. equalizá-las, integrando requisitos, dependências, precedências e terminologia;
-    3. corrigir incompatibilidades, ambiguidades e sobreposições;
-    4. adaptar, consolidar, desmembrar ou eliminar itens somente quando isso aumentar coerência e preservar integralmente o objetivo material.
+    2. equalizar objetivos, requisitos, dependências, precedências e terminologia;
+    3. resolver incompatibilidades, ambiguidades, sobreposições e lacunas;
+    4. adaptar, consolidar, desmembrar, reordenar ou eliminar itens somente quando isso aumentar coerência sem reduzir o objetivo material.
 
-  - Cada TO-DO DEVE ser separada em duas fases:
+  - Toda TO-DO DEVE ser separada em:
     - **Normatização (RCF):** atualizar RCFs, contratos, precedências e documentação normativa necessária;
-    - **Implementação:** executar código, migrações, testes, validações e demais alterações funcionais.
+    - **Implementação:** executar código, migrações, testes, validações e alterações funcionais.
 
-  - Após a equalização, iniciar e concluir imediatamente a fase de **Normatização RCF de todas as TO-DOs**, mantendo rastreabilidade entre cada regra e sua implementação futura.
+  - Após a equalização, a IA DEVE iniciar e concluir imediatamente a **Normatização RCF de todas as TO-DOs**, mantendo rastreabilidade entre cada regra e sua implementação futura.
 
-  - Concluída a normatização, INTERROMPER antes de qualquer implementação e solicitar autorização expressa do desenvolvedor, apresentando sucintamente:
+  - Concluída a normatização, a IA DEVE INTERROMPER antes de qualquer implementação e solicitar autorização expressa do desenvolvedor, informando sucintamente:
     - implementações pendentes;
     - dependências e ordem recomendada;
-    - impedimentos materiais eventualmente identificados.
+    - impedimentos materiais identificados.
 
-  - Esta todo nunca pode ser marcada como concluída e nunca pode ser removida: ela é perene, e somente deve ser considerada existente, quando houver outras.
+  - Esta TO-DO é perene: NÃO PODE ser marcada como concluída nem removida. Sua consideração/contabilização somente é necessária enquanto houver ao menos uma TO-DO por ela regida.
 
-* [ ] Diagnosticar e corrigir de forma robusta e resiliente o erro `Invalid workflow file: .github/workflows/source-intake.yml#L13 — You have an error in your YAML syntax on line 13`.
+- [ ] Diagnosticar e corrigir de forma robusta e resiliente o erro `Invalid workflow file: .github/workflows/source-intake.yml#L13 — You have an error in your YAML syntax on line 13`.
   - Inspecionar o arquivo integralmente e identificar a causa real, considerando que a linha indicada pelo GitHub PODE ser apenas o ponto de detecção de erro originado anteriormente.
   - Corrigir exclusivamente o necessário, preservando integralmente a finalidade, os gatilhos, permissões, condições, variáveis, dependências, jobs, steps e contratos vigentes do workflow.
   - Validar sintaxe YAML, estrutura de workflow do GitHub Actions, expressões `${{ ... }}`, indentação, escalares, aspas, caracteres especiais, chaves, listas, blocos multilinha e campos reservados.
@@ -34,7 +34,7 @@
   - A validação preventiva DEVE ser determinística, rápida, reutilizável pelo construtor de `AGENTS.md`, produzir diagnóstico conciso com arquivo e linha e não depender exclusivamente da tentativa remota de execução.
   - Confirmar como critérios de aceite: ausência do erro na linha `13` e de erros sintáticos correlatos; parsing integral bem-sucedido; reconhecimento válido pelo GitHub Actions; preservação do comportamento pretendido; e mecanismo preventivo documentado e executável.
 
-* [ ] Retomar e concluir a implementação já iniciada para migrar as `shortURLs` de `/_/<code>` para `/<code>`, juntamente com as demais FTs em andamento diretamente relacionadas.
+- [ ] Retomar e concluir a implementação já iniciada para migrar as `shortURLs` de `/_/<code>` para `/<code>`, juntamente com as demais FTs em andamento diretamente relacionadas.
   - Inspecionar previamente o estado real da implementação, preservando decisões, requisitos, compatibilidade e progresso válido já existentes.
   - Atualizar geração, indexação, resolução, redirecionamento, validação, testes, documentação e referências afetadas pelo novo formato.
   - Eliminar dependências funcionais de `/_/`, mantendo compatibilidade legada apenas quando ainda necessária ou normativamente exigida.
@@ -57,7 +57,7 @@
   - Sempre que possível, centralizar a geração em uma única fonte canônica e automatizar atualização e validação por scripts, hooks ou workflows já previstos, impedindo recorrência do descasamento e reduzindo processamento manual ou pela IA.
   - Não ampliar o escopo além da migração, da correção integral dos assets, da coerência normativa associada e das FTs em andamento necessárias à conclusão segura.
 
-- [ ] Avaliar e, somente se houver ganho líquido comprovável, segmentar os índices para carregamento sob demanda
+* [ ] Avaliar e, somente se houver ganho líquido comprovável, segmentar os índices para carregamento sob demanda
   - Preservar integralmente a arquitetura, aderência, determinismo e otimizações atuais de banco de dados, pesquisa e indexação, inclusive para _short URLs_ e demais modalidades. A segmentação NÃO DEVE substituir o método vigente, apenas complementá-lo quando tecnicamente vantajosa.
 
   - Inspecionar o fluxo real de geração, publicação, seleção, download, cache, invalidação e consulta dos índices; medir tamanho, latência, número de requisições, repetição de downloads, custo de processamento, desempenho em conexões lentas e impacto sobre cliente, servidor, build e manutenção.
@@ -85,7 +85,7 @@
 
   - Concluir somente quando os resultados permanecerem equivalentes aos atuais e os benchmarks comprovarem redução material de atraso ou tráfego sem regressão líquida.
 
-- [ ] Ampliar a ingestão de múltiplas publicações por conteúdo direto, anexo ou fonte remota
+* [ ] Ampliar a ingestão de múltiplas publicações por conteúdo direto, anexo ou fonte remota
   - Preservar os formatos atuais de solicitação por Issue/TO-DO e aceitar JSON, YAML, TXT ou equivalente por:
     - conteúdo direto;
     - arquivo anexado, implementando o suporte se inexistente;
@@ -141,7 +141,7 @@
 
   - Validar estruturas padrão, profundas, heterogêneas, mapeadas, ambíguas, malformadas, remotas, duplicadas e com identificadores externos conflitantes, além de MIME, hashes, links inválidos e indisponibilidade remota.
 
-- [ ] Resetar a base e realizar a ingestão definitiva das publicações remotas
+* [ ] Resetar a base e realizar a ingestão definitiva das publicações remotas
   - Os registros e publicações anteriores foram eliminados, pois PDF, EPUB, ZIP, 7z ou contêiner equivalente NÃO DEVEM existir neste repositório.
 
   - Testes PODEM criar pseudopublicações temporárias, desde que isoladas, identificáveis, não versionadas e integralmente removidas antes da ingestão definitiva.
