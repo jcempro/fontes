@@ -76,10 +76,10 @@
     - não inferir campos ambíguos nem equiparar chaves incompatíveis;
     - registrar itens ignorados e interromper a incorporação quando a correspondência não for segura.
 
-  - O informante PODE fornecer mapa estrutural JSON/YAML associando campos externos aos campos de ingestão, inclusive por caminhos aninhados, listas e estruturas repetidas. O mapa DEVE ser validado, determinístico, declarativo e incapaz de executar código ou alterar contratos internos.
-    - neste caso, o script deste repositório deve ser capaz de lidar com isso.
+  - O informante PODE fornecer mapa/manifesto estrutural JSON/YAML associando campos externos aos campos de ingestão, inclusive por caminhos aninhados, listas e estruturas repetidas. O mapa DEVE ser validado, determinístico, declarativo e incapaz de executar código ou alterar contratos internos.
+    - neste caso, o script deste repositório deve ser capaz de lidar com isso ser resiliente quanto ao rigor, no sentido de ser tolerante a multiplicidade, formas, estilos e expressividades.
     - o RCF deve normatizar o funcionamento.
-    - deve haver documentação clara explicando como fazer o mapa.
+    - deve haver documentação clara explicando como fazer o mapa/manifesto.
 
   - Dados externos constituem entrada candidata, NÃO fonte normativa:
     - IDs, códigos, _short URLs_, tags, categorias, estados e relações externas NÃO DEVEM ser assimilados como identificadores internos;
