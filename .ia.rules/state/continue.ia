@@ -73,7 +73,7 @@
 ## FT-019 — Gate de segmentação sob demanda
 
 - tipo: `implementacao_codigo`
-- estado: `concluida`
+- estado: `em_andamento`
 - criado_em: `2026-08-02T22:21:18-03:00`
 - origem: frente de segmentação da `FT-016`.
 - objetivo: medir o modelo vigente e alternativas; materializar segmentação somente se o ganho líquido material for comprovado.
@@ -85,10 +85,15 @@
 - autorização: solicitação humana de implementar FT-017 a FT-019 nesta tarefa.
 - corpus: distribuição real histórica imediatamente anterior à remoção recuperável, com `527` metadados lidos diretamente do Git; nenhuma pseudopublicação foi restaurada.
 - cenários: cache frio e quente, conexão representativa de `400 kbps` e `180 ms` de RTT, consulta comum, incompleta e pior caso; comparação do índice vigente, partições de URL curta por um e dois caracteres e mapa de termos/títulos.
-- equivalência: resultados e ordenação idênticos nos cenários medidos.
-- decisão: `preservar_modelo_vigente`; a segmentação candidata não venceu o gate de redução material, aumentou requisições e elevou o tamanho agregado.
-- evidência: `.ia.rules/state/contexts/FT-019/benchmark.json`; `INDEX_BENCHMARK_OK books=527 source=real equivalent=true decision=preservar_modelo_vigente`.
-- efeito: nenhum segmento, manifesto ou consumidor novo foi materializado.
+- correção da aferição: a rota curta deriva o segmento diretamente do prefixo do token; o manifesto não integra a rota crítica. A amostra única foi substituída pela distribuição integral das 527 resoluções, com mínimo, mediana, p95 e pior caso.
+- URLs curtas observadas: o modelo vigente mede `7.709 B`, `1` requisição e `334 ms`; no p95, prefixo 1 mede `1.376 B`, `1` requisição e `208 ms`, e prefixo 2 mede `150 B`, `1` requisição e `183 ms`. Ambos reduzem materialmente o custo por consulta, mas no corpus de 527 publicações ainda falham somente no gate agregado: `12.807 B` e `36.446 B`.
+- capacidade: projeção explicitamente identificada, derivada do corpus real e aferida em 1.000, 2.500, 5.000 e 10.000 publicações. Prefixo 1 vence todos os gates desde 2.500; em 10.000, reduz o p95 de `160.830 B / 3.397 ms` para `67.136 B / 1.523 ms`, mantém `1` requisição e agrega `173.243 B`, crescimento de 7,7%. Prefixo 2 reduz mais a consulta, mas agrega `455.187 B` e permanece reprovado.
+- títulos: a auditoria não encontrou a premissa indevida; em cache frio, o mapa seletor é necessário para localizar segmentos de consultas arbitrárias, e os cenários equivalentes continuam transferindo mais bytes e fazendo 8 a 10 requisições.
+- equivalência: resolução de URL curta, resultados e ordenação de títulos idênticos nos cenários medidos.
+- decisão corrigida: `materializar_particao_url_curta` com prefixo 1 e ativação condicionada ao corpus real vencer os mesmos gates durante o build; preservar o índice vigente abaixo do limiar. A segmentação de títulos e o prefixo 2 permanecem recusados pelos resultados empíricos.
+- evidência: `.ia.rules/state/contexts/FT-019/benchmark.json`; `INDEX_BENCHMARK_OK books=527 source=real equivalent=true decision=materializar_particao_url_curta`.
+- efeito desta revisão: benchmark e decisão corrigidos; materialização adaptativa de gerador, consumidor, cache, fallback e manifesto permanece como tarefa de implementação da FT-019.
+- estado: reaberta para materialização da estratégia aprovada antes da conclusão técnica.
 - bloqueio: nenhum.
 
 ## FT-020 — Ingestão multicanal remota

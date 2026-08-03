@@ -1,9 +1,712 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "corpus": {
     "source": "git:f240cc3^:src/data/books/*/metadata.json",
     "books": 527,
-    "note": "Somente métricas agregadas; nenhuma pseudopublicação foi restaurada."
+    "note": "Aferição observada; nenhuma pseudopublicação foi restaurada."
+  },
+  "capacity_projection": {
+    "range": {
+      "observed": 527,
+      "maximum": 10000,
+      "checkpoints": [
+        1000,
+        2500,
+        5000,
+        10000
+      ]
+    },
+    "method": "tokens sequenciais canônicos adicionais e destinos derivados ciclicamente do corpus real, identificados por sufixo único; projeção, não observação",
+    "scenarios": {
+      "1000": {
+        "current_short_url": {
+          "cold": {
+            "bytes": 15543,
+            "requests": 1,
+            "first_result_ms": 491
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 64641,
+          "cpu_records_scanned": 1000
+        },
+        "short_url_partitions": [
+          {
+            "prefix_length": 1,
+            "routing": {
+              "strategy": "token_prefix",
+              "deterministic_client_side": true,
+              "manifest_in_critical_path": false
+            },
+            "segment_count": 63,
+            "aggregate_bytes": 21688,
+            "manifest_bytes": 190,
+            "max_segment_books": 65,
+            "lookup_distribution": {
+              "minimum": {
+                "cold": {
+                  "bytes": 63,
+                  "requests": 1,
+                  "first_result_ms": 181
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 43,
+                "cpu_records_scanned": 1
+              },
+              "median": {
+                "cold": {
+                  "bytes": 1108,
+                  "requests": 1,
+                  "first_result_ms": 202
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 3908,
+                "cpu_records_scanned": 65
+              },
+              "p95": {
+                "cold": {
+                  "bytes": 1531,
+                  "requests": 1,
+                  "first_result_ms": 211
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 4587,
+                "cpu_records_scanned": 65
+              },
+              "worst_case": {
+                "cold": {
+                  "bytes": 1531,
+                  "requests": 1,
+                  "first_result_ms": 211
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 4587,
+                "cpu_records_scanned": 65
+              }
+            },
+            "gates": {
+              "transfer": true,
+              "first_result": true,
+              "requests": true,
+              "aggregate": false
+            },
+            "approved": false
+          },
+          {
+            "prefix_length": 2,
+            "routing": {
+              "strategy": "token_prefix",
+              "deterministic_client_side": true,
+              "manifest_in_critical_path": false
+            },
+            "segment_count": 909,
+            "aggregate_bytes": 76703,
+            "manifest_bytes": 1774,
+            "max_segment_books": 10,
+            "lookup_distribution": {
+              "minimum": {
+                "cold": {
+                  "bytes": 58,
+                  "requests": 1,
+                  "first_result_ms": 181
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 69,
+                "cpu_records_scanned": 1
+              },
+              "median": {
+                "cold": {
+                  "bytes": 80,
+                  "requests": 1,
+                  "first_result_ms": 182
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 60,
+                "cpu_records_scanned": 1
+              },
+              "p95": {
+                "cold": {
+                  "bytes": 147,
+                  "requests": 1,
+                  "first_result_ms": 183
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 574,
+                "cpu_records_scanned": 10
+              },
+              "worst_case": {
+                "cold": {
+                  "bytes": 232,
+                  "requests": 1,
+                  "first_result_ms": 185
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 489,
+                "cpu_records_scanned": 7
+              }
+            },
+            "gates": {
+              "transfer": true,
+              "first_result": true,
+              "requests": true,
+              "aggregate": false
+            },
+            "approved": false
+          }
+        ]
+      },
+      "2500": {
+        "current_short_url": {
+          "cold": {
+            "bytes": 39826,
+            "requests": 1,
+            "first_result_ms": 977
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 166583,
+          "cpu_records_scanned": 2500
+        },
+        "short_url_partitions": [
+          {
+            "prefix_length": 1,
+            "routing": {
+              "strategy": "token_prefix",
+              "deterministic_client_side": true,
+              "manifest_in_critical_path": false
+            },
+            "segment_count": 63,
+            "aggregate_bytes": 49110,
+            "manifest_bytes": 190,
+            "max_segment_books": 94,
+            "lookup_distribution": {
+              "minimum": {
+                "cold": {
+                  "bytes": 66,
+                  "requests": 1,
+                  "first_result_ms": 181
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 46,
+                "cpu_records_scanned": 1
+              },
+              "median": {
+                "cold": {
+                  "bytes": 1178,
+                  "requests": 1,
+                  "first_result_ms": 204
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 4068,
+                "cpu_records_scanned": 65
+              },
+              "p95": {
+                "cold": {
+                  "bytes": 1649,
+                  "requests": 1,
+                  "first_result_ms": 213
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 5044,
+                "cpu_records_scanned": 73
+              },
+              "worst_case": {
+                "cold": {
+                  "bytes": 1676,
+                  "requests": 1,
+                  "first_result_ms": 214
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 5269,
+                "cpu_records_scanned": 65
+              }
+            },
+            "gates": {
+              "transfer": true,
+              "first_result": true,
+              "requests": true,
+              "aggregate": true
+            },
+            "approved": true
+          },
+          {
+            "prefix_length": 2,
+            "routing": {
+              "strategy": "token_prefix",
+              "deterministic_client_side": true,
+              "manifest_in_critical_path": false
+            },
+            "segment_count": 2381,
+            "aggregate_bytes": 203568,
+            "manifest_bytes": 4705,
+            "max_segment_books": 10,
+            "lookup_distribution": {
+              "minimum": {
+                "cold": {
+                  "bytes": 58,
+                  "requests": 1,
+                  "first_result_ms": 181
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 69,
+                "cpu_records_scanned": 1
+              },
+              "median": {
+                "cold": {
+                  "bytes": 80,
+                  "requests": 1,
+                  "first_result_ms": 182
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 60,
+                "cpu_records_scanned": 1
+              },
+              "p95": {
+                "cold": {
+                  "bytes": 122,
+                  "requests": 1,
+                  "first_result_ms": 182
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 125,
+                "cpu_records_scanned": 1
+              },
+              "worst_case": {
+                "cold": {
+                  "bytes": 232,
+                  "requests": 1,
+                  "first_result_ms": 185
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 489,
+                "cpu_records_scanned": 7
+              }
+            },
+            "gates": {
+              "transfer": true,
+              "first_result": true,
+              "requests": true,
+              "aggregate": false
+            },
+            "approved": false
+          }
+        ]
+      },
+      "5000": {
+        "current_short_url": {
+          "cold": {
+            "bytes": 80216,
+            "requests": 1,
+            "first_result_ms": 1784
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 335766,
+          "cpu_records_scanned": 5000
+        },
+        "short_url_partitions": [
+          {
+            "prefix_length": 1,
+            "routing": {
+              "strategy": "token_prefix",
+              "deterministic_client_side": true,
+              "manifest_in_critical_path": false
+            },
+            "segment_count": 63,
+            "aggregate_bytes": 92610,
+            "manifest_bytes": 190,
+            "max_segment_books": 803,
+            "lookup_distribution": {
+              "minimum": {
+                "cold": {
+                  "bytes": 979,
+                  "requests": 1,
+                  "first_result_ms": 200
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 4722,
+                "cpu_records_scanned": 65
+              },
+              "median": {
+                "cold": {
+                  "bytes": 1327,
+                  "requests": 1,
+                  "first_result_ms": 207
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 4457,
+                "cpu_records_scanned": 77
+              },
+              "p95": {
+                "cold": {
+                  "bytes": 13072,
+                  "requests": 1,
+                  "first_result_ms": 441
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 56329,
+                "cpu_records_scanned": 803
+              },
+              "worst_case": {
+                "cold": {
+                  "bytes": 13072,
+                  "requests": 1,
+                  "first_result_ms": 441
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 56329,
+                "cpu_records_scanned": 803
+              }
+            },
+            "gates": {
+              "transfer": true,
+              "first_result": true,
+              "requests": true,
+              "aggregate": true
+            },
+            "approved": true
+          },
+          {
+            "prefix_length": 2,
+            "routing": {
+              "strategy": "token_prefix",
+              "deterministic_client_side": true,
+              "manifest_in_critical_path": false
+            },
+            "segment_count": 4096,
+            "aggregate_bytes": 364265,
+            "manifest_bytes": 8232,
+            "max_segment_books": 65,
+            "lookup_distribution": {
+              "minimum": {
+                "cold": {
+                  "bytes": 58,
+                  "requests": 1,
+                  "first_result_ms": 181
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 69,
+                "cpu_records_scanned": 1
+              },
+              "median": {
+                "cold": {
+                  "bytes": 84,
+                  "requests": 1,
+                  "first_result_ms": 182
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 64,
+                "cpu_records_scanned": 1
+              },
+              "p95": {
+                "cold": {
+                  "bytes": 1340,
+                  "requests": 1,
+                  "first_result_ms": 207
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 4524,
+                "cpu_records_scanned": 65
+              },
+              "worst_case": {
+                "cold": {
+                  "bytes": 1660,
+                  "requests": 1,
+                  "first_result_ms": 213
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 5394,
+                "cpu_records_scanned": 65
+              }
+            },
+            "gates": {
+              "transfer": true,
+              "first_result": true,
+              "requests": true,
+              "aggregate": false
+            },
+            "approved": false
+          }
+        ]
+      },
+      "10000": {
+        "current_short_url": {
+          "cold": {
+            "bytes": 160830,
+            "requests": 1,
+            "first_result_ms": 3397
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 678253,
+          "cpu_records_scanned": 10000
+        },
+        "short_url_partitions": [
+          {
+            "prefix_length": 1,
+            "routing": {
+              "strategy": "token_prefix",
+              "deterministic_client_side": true,
+              "manifest_in_critical_path": false
+            },
+            "segment_count": 63,
+            "aggregate_bytes": 173243,
+            "manifest_bytes": 190,
+            "max_segment_books": 4161,
+            "lookup_distribution": {
+              "minimum": {
+                "cold": {
+                  "bytes": 994,
+                  "requests": 1,
+                  "first_result_ms": 200
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 3674,
+                "cpu_records_scanned": 65
+              },
+              "median": {
+                "cold": {
+                  "bytes": 27548,
+                  "requests": 1,
+                  "first_result_ms": 731
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 116884,
+                "cpu_records_scanned": 1707
+              },
+              "p95": {
+                "cold": {
+                  "bytes": 67136,
+                  "requests": 1,
+                  "first_result_ms": 1523
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 286654,
+                "cpu_records_scanned": 4161
+              },
+              "worst_case": {
+                "cold": {
+                  "bytes": 67136,
+                  "requests": 1,
+                  "first_result_ms": 1523
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 286654,
+                "cpu_records_scanned": 4161
+              }
+            },
+            "gates": {
+              "transfer": true,
+              "first_result": true,
+              "requests": true,
+              "aggregate": true
+            },
+            "approved": true
+          },
+          {
+            "prefix_length": 2,
+            "routing": {
+              "strategy": "token_prefix",
+              "deterministic_client_side": true,
+              "manifest_in_critical_path": false
+            },
+            "segment_count": 4096,
+            "aggregate_bytes": 455187,
+            "manifest_bytes": 8232,
+            "max_segment_books": 65,
+            "lookup_distribution": {
+              "minimum": {
+                "cold": {
+                  "bytes": 58,
+                  "requests": 1,
+                  "first_result_ms": 181
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 69,
+                "cpu_records_scanned": 1
+              },
+              "median": {
+                "cold": {
+                  "bytes": 1115,
+                  "requests": 1,
+                  "first_result_ms": 202
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 4889,
+                "cpu_records_scanned": 65
+              },
+              "p95": {
+                "cold": {
+                  "bytes": 1555,
+                  "requests": 1,
+                  "first_result_ms": 211
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 4996,
+                "cpu_records_scanned": 65
+              },
+              "worst_case": {
+                "cold": {
+                  "bytes": 1660,
+                  "requests": 1,
+                  "first_result_ms": 213
+                },
+                "warm": {
+                  "bytes": 0,
+                  "requests": 0,
+                  "first_result_ms": 0
+                },
+                "memory_bytes": 5394,
+                "cpu_records_scanned": 65
+              }
+            },
+            "gates": {
+              "transfer": true,
+              "first_result": true,
+              "requests": true,
+              "aggregate": false
+            },
+            "approved": false
+          }
+        ]
+      }
+    }
   },
   "network": {
     "label": "slow-400kbps-180ms",
@@ -34,57 +737,173 @@
     },
     "short_url": {
       "cold": {
-        "bytes": 2750,
+        "bytes": 7709,
         "requests": 1,
-        "first_result_ms": 235
+        "first_result_ms": 334
       },
       "warm": {
         "bytes": 0,
         "requests": 0,
         "first_result_ms": 0
       },
-      "memory_bytes": 8456,
+      "memory_bytes": 32725,
       "cpu_records_scanned": 527
     }
   },
   "short_url_partitions": [
     {
       "prefix_length": 1,
-      "aggregate_bytes": 4597,
+      "routing": {
+        "strategy": "token_prefix",
+        "deterministic_client_side": true,
+        "manifest_in_critical_path": false
+      },
+      "segment_count": 63,
+      "aggregate_bytes": 12807,
+      "manifest_bytes": 190,
       "max_segment_books": 65,
-      "sample": {
-        "cold": {
-          "bytes": 455,
-          "requests": 2,
-          "first_result_ms": 369
+      "lookup_distribution": {
+        "minimum": {
+          "cold": {
+            "bytes": 61,
+            "requests": 1,
+            "first_result_ms": 181
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 78,
+          "cpu_records_scanned": 1
         },
-        "warm": {
-          "bytes": 0,
-          "requests": 0,
-          "first_result_ms": 0
+        "median": {
+          "cold": {
+            "bytes": 695,
+            "requests": 1,
+            "first_result_ms": 194
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 2254,
+          "cpu_records_scanned": 38
         },
-        "memory_bytes": 1277,
-        "cpu_records_scanned": 65
-      }
+        "p95": {
+          "cold": {
+            "bytes": 1376,
+            "requests": 1,
+            "first_result_ms": 208
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 5069,
+          "cpu_records_scanned": 65
+        },
+        "worst_case": {
+          "cold": {
+            "bytes": 1376,
+            "requests": 1,
+            "first_result_ms": 208
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 5069,
+          "cpu_records_scanned": 65
+        }
+      },
+      "gates": {
+        "transfer": true,
+        "first_result": true,
+        "requests": true,
+        "aggregate": false
+      },
+      "approved": false
     },
     {
       "prefix_length": 2,
-      "aggregate_bytes": 17342,
+      "routing": {
+        "strategy": "token_prefix",
+        "deterministic_client_side": true,
+        "manifest_in_critical_path": false
+      },
+      "segment_count": 436,
+      "aggregate_bytes": 36446,
+      "manifest_bytes": 900,
       "max_segment_books": 10,
-      "sample": {
-        "cold": {
-          "bytes": 936,
-          "requests": 2,
-          "first_result_ms": 379
+      "lookup_distribution": {
+        "minimum": {
+          "cold": {
+            "bytes": 58,
+            "requests": 1,
+            "first_result_ms": 181
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 69,
+          "cpu_records_scanned": 1
         },
-        "warm": {
-          "bytes": 0,
-          "requests": 0,
-          "first_result_ms": 0
+        "median": {
+          "cold": {
+            "bytes": 80,
+            "requests": 1,
+            "first_result_ms": 182
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 60,
+          "cpu_records_scanned": 1
         },
-        "memory_bytes": 2184,
-        "cpu_records_scanned": 1
-      }
+        "p95": {
+          "cold": {
+            "bytes": 150,
+            "requests": 1,
+            "first_result_ms": 183
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 595,
+          "cpu_records_scanned": 10
+        },
+        "worst_case": {
+          "cold": {
+            "bytes": 232,
+            "requests": 1,
+            "first_result_ms": 185
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 489,
+          "cpu_records_scanned": 7
+        }
+      },
+      "gates": {
+        "transfer": true,
+        "first_result": true,
+        "requests": true,
+        "aggregate": false
+      },
+      "approved": false
     }
   ],
   "title_term_map": {
@@ -197,15 +1016,27 @@
     }
   },
   "equivalence": {
-    "results_and_order": true
+    "short_url_resolution": true,
+    "title_results_and_order": true
   },
   "decision": {
-    "approved": false,
-    "action": "preservar_modelo_vigente",
-    "reasons": [
-      "títulos não venceram o gate material",
-      "URLs curtas não venceram o gate material",
-      "crescimento agregado excessivo"
-    ]
+    "approved": true,
+    "action": "materializar_particao_url_curta",
+    "short_url": {
+      "approved": true,
+      "recommended_prefix_length": 1,
+      "basis": "capacidade_projetada",
+      "activation": "condicionada ao corpus real vencer os mesmos gates durante o build",
+      "reasons": [
+        "ganho material comprovado na capacidade projetada com roteamento direto em uma requisição"
+      ]
+    },
+    "title": {
+      "approved": false,
+      "reasons": [
+        "consultas não venceram o gate material",
+        "crescimento agregado excessivo"
+      ]
+    }
   }
 }

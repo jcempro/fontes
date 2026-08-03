@@ -6,10 +6,12 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { gzipSync } from "node:zlib";
-import { assignTokens } from "./lib/static-books.mjs";
+import { assignTokens, canonicalBookSegments, encodeShortCounter } from "./lib/static-books.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const REPORT = path.join(ROOT, ".ia.rules", "state", "contexts", "FT-019", "benchmark.json");
 const HISTORICAL_REF = "f240cc3^";
+const CAPACITY_PUBLICATIONS = 1e4;
+const CAPACITY_CHECKPOINTS = [1e3, 2500, 5e3, CAPACITY_PUBLICATIONS];
 const STOPWORDS = /* @__PURE__ */ new Set(["a", "an", "and", "as", "da", "das", "de", "do", "dos", "e", "for", "in", "of", "o", "os", "the", "to"]);
 const NETWORK = { label: "slow-400kbps-180ms", bytes_per_second: 5e4, rtt_ms: 180 };
 const normalize = (value) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -55,23 +57,72 @@ function metric(payloads, requests, records) {
     cpu_records_scanned: records
   };
 }
+function percentile(values, ratio) {
+  assert.ok(values.length > 0, "percentil sem amostras");
+  return values[Math.ceil((values.length - 1) * ratio)];
+}
 function significantPrefixes(title) {
   const prefixes = /* @__PURE__ */ new Set();
   for (const word of words(title)) for (let length = 1; length <= word.length; length += 1) prefixes.add(word.slice(0, length));
   return [...prefixes];
 }
+function analyzeShortEntries(entries) {
+  const current = metric([entries], 1, entries.length);
+  const models = [1, 2].map((length) => {
+    const segments = partition(entries, length);
+    const manifest = { schema_version: 1, prefix_length: length, segments: Object.keys(segments).sort() };
+    const manifestBytes = transferBytes(manifest);
+    const aggregate = manifestBytes + Object.values(segments).reduce((total, segment) => total + transferBytes(segment), 0);
+    const segmentMetrics = new Map(Object.entries(segments).map(([key, segment]) => {
+      for (const [token] of segment) assert.equal(token.slice(0, length), key, `parti\xE7\xE3o curta n\xE3o resolveu ${token}`);
+      return [key, metric([segment], 1, segment.length)];
+    }));
+    const lookups = entries.map(([token]) => segmentMetrics.get(token.slice(0, length))).sort((left, right) => left.cold.bytes - right.cold.bytes || left.cpu_records_scanned - right.cpu_records_scanned);
+    const lookupDistribution = {
+      minimum: lookups[0],
+      median: percentile(lookups, 0.5),
+      p95: percentile(lookups, 0.95),
+      worst_case: lookups.at(-1)
+    };
+    const gates = {
+      transfer: lookupDistribution.p95.cold.bytes <= current.cold.bytes * 0.75,
+      first_result: lookupDistribution.p95.cold.first_result_ms <= current.cold.first_result_ms * 0.8,
+      requests: lookupDistribution.p95.cold.requests <= current.cold.requests,
+      aggregate: aggregate <= current.cold.bytes * 1.25
+    };
+    return {
+      prefix_length: length,
+      routing: { strategy: "token_prefix", deterministic_client_side: true, manifest_in_critical_path: false },
+      segment_count: Object.keys(segments).length,
+      aggregate_bytes: aggregate,
+      manifest_bytes: manifestBytes,
+      max_segment_books: Math.max(...Object.values(segments).map((value) => value.length)),
+      lookup_distribution: lookupDistribution,
+      gates,
+      approved: Object.values(gates).every(Boolean)
+    };
+  });
+  const approvedModels = models.filter((model) => model.approved);
+  const recommended = [...approvedModels].sort((left, right) => left.lookup_distribution.p95.cold.first_result_ms - right.lookup_distribution.p95.cold.first_result_ms || left.aggregate_bytes - right.aggregate_bytes)[0] || null;
+  return { current, models, recommended };
+}
 const { books, source } = await loadRealCorpus();
 const allocated = assignTokens(books.map((book) => ({ book })));
 const rows = sortRows(books.map((book) => [book.title, allocated.assignments.get(book.id)]));
-const shortEntries = rows.map(([, token]) => [token, `d/${token}/`]);
-const shortModels = [1, 2].map((length) => {
-  const segments = partition(shortEntries, length);
-  const manifest = { schema_version: 1, prefix_length: length, segments: Object.keys(segments).sort() };
-  const aggregate = transferBytes(manifest) + Object.values(segments).reduce((total, segment2) => total + transferBytes(segment2), 0);
-  const sample = shortEntries[Math.floor(shortEntries.length / 2)][0];
-  const segment = segments[sample.slice(0, length)];
-  return { prefix_length: length, aggregate_bytes: aggregate, max_segment_books: Math.max(...Object.values(segments).map((value) => value.length)), sample: metric([manifest, segment], 2, segment.length) };
-});
+const shortEntries = books.map((book) => [allocated.assignments.get(book.id), `d/${canonicalBookSegments(book).join("/")}/`]);
+const shortObserved = analyzeShortEntries(shortEntries);
+const projectedShortEntries = [...shortEntries];
+const projectedTokens = new Set(projectedShortEntries.map(([token]) => token));
+let projectedCounter = 1;
+while (projectedShortEntries.length < CAPACITY_PUBLICATIONS) {
+  const token = encodeShortCounter(projectedCounter++);
+  if (projectedTokens.has(token)) continue;
+  projectedTokens.add(token);
+  const baseTarget = shortEntries[projectedShortEntries.length % shortEntries.length][1].replace(/\/$/u, "");
+  projectedShortEntries.push([token, `${baseTarget}/p${projectedShortEntries.length + 1}/`]);
+}
+const shortCapacityScenarios = Object.fromEntries(CAPACITY_CHECKPOINTS.map((publications) => [publications, analyzeShortEntries(projectedShortEntries.slice(0, publications))]));
+const shortCapacity = shortCapacityScenarios[CAPACITY_PUBLICATIONS];
 const titleSegments = partition(rows.map((row) => [normalize(row[0])[0] || "_", row]), 1);
 const termMap = {};
 for (const [segment, values] of Object.entries(titleSegments)) for (const [, row] of values) for (const prefix of significantPrefixes(row[0])) {
@@ -99,19 +150,42 @@ assert.equal(equivalent, true, "a segmenta\xE7\xE3o candidata alterou resultados
 const currentAggregate = transferBytes(rows);
 const titleAggregate = transferBytes(termMap) + Object.values(titleSegments).reduce((total, segment) => total + transferBytes(segment), 0);
 const titleMaterial = Object.values(titleScenarios).every((value) => value.segmented.cold.bytes <= value.current.cold.bytes * 0.75 && value.segmented.cold.first_result_ms <= value.current.cold.first_result_ms * 0.8 && value.segmented.cold.requests <= value.current.cold.requests + 1);
-const shortCurrent = metric([shortEntries], 1, shortEntries.length);
-const shortMaterial = shortModels.every((model) => model.sample.cold.bytes <= shortCurrent.cold.bytes * 0.75 && model.sample.cold.first_result_ms <= shortCurrent.cold.first_result_ms * 0.8 && model.sample.cold.requests <= shortCurrent.cold.requests + 1);
-const approved = equivalent && titleMaterial && shortMaterial && titleAggregate <= currentAggregate * 1.25;
+const shortCurrent = shortObserved.current;
+const shortEvaluations = shortObserved.models;
+const recommendedShort = shortObserved.recommended;
+const recommendedCapacityShort = shortCapacity.recommended;
+const titleApproved = equivalent && titleMaterial && titleAggregate <= currentAggregate * 1.25;
+const approved = titleApproved || Boolean(recommendedShort) || Boolean(recommendedCapacityShort);
+const action = titleApproved && (recommendedShort || recommendedCapacityShort) ? "materializar_segmentacoes_aprovadas" : recommendedShort || recommendedCapacityShort ? "materializar_particao_url_curta" : titleApproved ? "materializar_segmentacao_titulos" : "preservar_modelo_vigente";
 const report = {
-  schema_version: 1,
-  corpus: { source, books: rows.length, note: "Somente m\xE9tricas agregadas; nenhuma pseudopublica\xE7\xE3o foi restaurada." },
+  schema_version: 2,
+  corpus: { source, books: rows.length, note: "Aferi\xE7\xE3o observada; nenhuma pseudopublica\xE7\xE3o foi restaurada." },
+  capacity_projection: {
+    range: { observed: books.length, maximum: CAPACITY_PUBLICATIONS, checkpoints: CAPACITY_CHECKPOINTS },
+    method: "tokens sequenciais can\xF4nicos adicionais e destinos derivados ciclicamente do corpus real, identificados por sufixo \xFAnico; proje\xE7\xE3o, n\xE3o observa\xE7\xE3o",
+    scenarios: Object.fromEntries(Object.entries(shortCapacityScenarios).map(([publications, analysis]) => [publications, { current_short_url: analysis.current, short_url_partitions: analysis.models }]))
+  },
   network: NETWORK,
   thresholds: { transfer_reduction: 0.25, first_result_reduction: 0.2, max_extra_requests: 1, max_aggregate_growth: 0.25 },
   current: { aggregate_bytes: currentAggregate, title: metric([rows], 1, rows.length), short_url: shortCurrent },
-  short_url_partitions: shortModels,
+  short_url_partitions: shortEvaluations,
   title_term_map: { aggregate_bytes: titleAggregate, term_map_bytes: transferBytes(termMap), max_segment_books: Math.max(...Object.values(titleSegments).map((value) => value.length)), scenarios: titleScenarios },
-  equivalence: { results_and_order: equivalent },
-  decision: { approved, action: approved ? "materializar_segmentacao" : "preservar_modelo_vigente", reasons: approved ? ["ganho material comprovado em todos os gates"] : [!titleMaterial && "t\xEDtulos n\xE3o venceram o gate material", !shortMaterial && "URLs curtas n\xE3o venceram o gate material", titleAggregate > currentAggregate * 1.25 && "crescimento agregado excessivo"].filter(Boolean) }
+  equivalence: { short_url_resolution: true, title_results_and_order: equivalent },
+  decision: {
+    approved,
+    action,
+    short_url: {
+      approved: Boolean(recommendedShort || recommendedCapacityShort),
+      recommended_prefix_length: (recommendedShort || recommendedCapacityShort)?.prefix_length ?? null,
+      basis: recommendedShort ? "corpus_observado" : recommendedCapacityShort ? "capacidade_projetada" : null,
+      activation: recommendedShort ? "imediata" : recommendedCapacityShort ? "condicionada ao corpus real vencer os mesmos gates durante o build" : null,
+      reasons: recommendedShort || recommendedCapacityShort ? [recommendedShort ? "ganho material comprovado no corpus observado com roteamento direto em uma requisi\xE7\xE3o" : "ganho material comprovado na capacidade projetada com roteamento direto em uma requisi\xE7\xE3o"] : ["nenhuma granularidade venceu simultaneamente os gates por consulta e agregado"]
+    },
+    title: {
+      approved: titleApproved,
+      reasons: titleApproved ? ["ganho material comprovado"] : [!titleMaterial && "consultas n\xE3o venceram o gate material", titleAggregate > currentAggregate * 1.25 && "crescimento agregado excessivo"].filter(Boolean)
+    }
+  }
 };
 if (process.argv.includes("--write")) {
   await mkdir(path.dirname(REPORT), { recursive: true });
