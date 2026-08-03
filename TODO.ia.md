@@ -12,10 +12,10 @@
     4. adaptar, consolidar, desmembrar ou eliminar itens somente quando isso aumentar coerência e preservar integralmente o objetivo material.
 
   - Cada TO-DO DEVE ser separada em duas fases:
-    - **Normatização:** atualizar RCFs, contratos, precedências e documentação normativa necessária;
+    - **Normatização (RCF):** atualizar RCFs, contratos, precedências e documentação normativa necessária;
     - **Implementação:** executar código, migrações, testes, validações e demais alterações funcionais.
 
-  - Após a equalização, iniciar e concluir imediatamente a fase de **Normatização de todas as TO-DOs**, mantendo rastreabilidade entre cada regra e sua implementação futura.
+  - Após a equalização, iniciar e concluir imediatamente a fase de **Normatização RCF de todas as TO-DOs**, mantendo rastreabilidade entre cada regra e sua implementação futura.
 
   - Concluída a normatização, INTERROMPER antes de qualquer implementação e solicitar autorização expressa do desenvolvedor, apresentando sucintamente:
     - implementações pendentes;
