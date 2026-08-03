@@ -682,13 +682,13 @@
         "package.json",
         "scripts/validate-workflows.mjs"
       ],
-      "commit": "",
+      "commit": "b617bfd604a59622ceb18b3e5099d41e4cee926b",
       "ft": "FT-017",
       "id": "3269c8a01dd01b8906d59cdb",
       "line": 339,
       "rcf": "RCF.md",
       "sentenceSha256": "ac43f3abfa8bc3c54baf82931c1ee6c24da1383f0dbbadc090d349e1491981dd",
-      "state": "pending",
+      "state": "synchronized",
       "syncCommit": ""
     },
     {
@@ -697,13 +697,13 @@
         "package.json",
         "scripts/validate-workflows.mjs"
       ],
-      "commit": "",
+      "commit": "b617bfd604a59622ceb18b3e5099d41e4cee926b",
       "ft": "FT-017",
       "id": "a11cef838f243ed6b891e785",
       "line": 340,
       "rcf": "RCF.md",
       "sentenceSha256": "39060aef2e2203d29d22e2b1b0ec82f89b6fcce54ced736d958d33d68cde4286",
-      "state": "pending",
+      "state": "synchronized",
       "syncCommit": ""
     },
     {
@@ -1042,13 +1042,13 @@
         "package.json",
         "scripts/validate-workflows.mjs"
       ],
-      "commit": "",
+      "commit": "b617bfd604a59622ceb18b3e5099d41e4cee926b",
       "ft": "FT-017",
       "id": "b10dd9aa22fadea490f4c094",
       "line": 422,
       "rcf": "RCF.md",
       "sentenceSha256": "dca71e9bfd51aabc4c53501260be2909c0af056a2aeed06c4cbf49128828cb99",
-      "state": "pending",
+      "state": "synchronized",
       "syncCommit": ""
     },
     {
