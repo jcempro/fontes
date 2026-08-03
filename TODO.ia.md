@@ -114,3 +114,148 @@
   - Documentar sucintamente conteúdo direto, anexo, URL remota, múltiplas publicações, estruturas aninhadas e mapa estrutural personalizado.
 
   - Validar estruturas padrão, profundas, heterogêneas, mapeadas, ambíguas, malformadas, remotas, duplicadas e com identificadores externos conflitantes, além de MIME, hashes, links inválidos e indisponibilidade remota.
+
+* [ ] Resetar a base e realizar a ingestão definitiva das publicações remotas
+  - Os registros e publicações anteriores foram eliminados, pois PDF, EPUB, ZIP, 7z ou contêiner equivalente NÃO DEVEM existir neste repositório.
+
+  - Testes PODEM criar pseudopublicações temporárias, desde que isoladas, identificáveis, não versionadas e integralmente removidas antes da ingestão definitiva.
+
+  - Executar esta tarefa somente após a conclusão funcional e validada de todas as demais TO-DOs relacionadas à ingestão, validação, indexação e persistência.
+
+  - Antes da ingestão definitiva:
+    1. remover pseudopublicações e qualquer resquício de base, índice, cache ou estado canônico anterior;
+    2. preservar apenas schemas, configurações e estruturas normativas;
+    3. confirmar que a execução parte de estado limpo e reproduzível.
+
+  - Ingerir `https://egwsearch.jcem.pro/publications/index.json` por meio do mecanismo remoto e do mapa estrutural já normatizados.
+
+  - Importar somente metadados e capas. Para PDF/EPUB:
+    - registrar apenas URLs e hashes validados;
+    - NÃO baixar, copiar, versionar ou manter contêiner local;
+    - confirmar disponibilidade, MIME real, formato e hashes antes da incorporação.
+
+  - IDs, caminhos, siglas, _short URLs_, tags e demais identificadores externos permanecem meramente informativos; o repositório DEVE deduplicar, conciliar e administrar seus próprios registros canônicos conforme o RCF.
+
+  - Utilizar o seguinte manifesto estrutural para a URL supra:
+
+  ```json
+  {
+    "schema_version": "publication-index-manifest/v1",
+    "describes": "publication-global-index/v1",
+    "notation": {
+      "T?": "T|null",
+      "T[]": "array<T>"
+    },
+    "root": {
+      "schema_version": "literal:publication-global-index/v1",
+      "generation": "generation",
+      "locales": "locale[]",
+      "publications": "publication[]"
+    },
+    "types": {
+      "generation": {
+        "generator": "string",
+        "version": "string",
+        "configuration_sha256": "hex(64)",
+        "source_fingerprint": "hex(64)"
+      },
+      "locale": {
+        "language_path": "string",
+        "category": "string",
+        "type": "string",
+        "publications": "integer"
+      },
+      "publication": {
+        "id": "string",
+        "remote_id": "string?",
+        "title": "title",
+        "author": "author",
+        "localization": "localization",
+        "tags": "string[]",
+        "public_url": "string?",
+        "path": "string",
+        "metadata": "metadata",
+        "cover": "resource?",
+        "assets": "asset[]",
+        "formative_state": "string",
+        "formative_data": "formative?"
+      },
+      "title": {
+        "original": "string",
+        "normalized": "string",
+        "route_slug": "string",
+        "acronym": "string"
+      },
+      "author": {
+        "name": "string",
+        "key": "string"
+      },
+      "localization": {
+        "language": "string",
+        "language_path": "string",
+        "category": "string",
+        "type": "string"
+      },
+      "metadata": {
+        "path": "string",
+        "quality": "string"
+      },
+      "resource": {
+        "path": "string",
+        "url": "string",
+        "size": "integer",
+        "hashes": "hashes"
+      },
+      "asset": {
+        "format": "pdf|epub",
+        "path": "string",
+        "url": "string",
+        "size": "integer",
+        "hashes": "hashes",
+        "chunking_manifest": "string?"
+      },
+      "hashes": {
+        "sha1": "hex(40)",
+        "sha256": "hex(64)",
+        "sha512": "hex(128)"
+      },
+      "formative": {
+        "book": "book",
+        "urls": "url[]",
+        "global_hashes": "global_hash[]"
+      },
+      "book": {
+        "title": "string",
+        "contributors": "contributor[]",
+        "edition": "object",
+        "language": "string",
+        "primary_category": "string",
+        "tags": "string[]"
+      },
+      "contributor": {
+        "name": "string",
+        "role": "string"
+      },
+      "url": {
+        "format": "pdf|epub",
+        "url": "string"
+      },
+      "global_hash": {
+        "format": "pdf|epub",
+        "sha1": "hex(40)",
+        "sha256": "hex(64)",
+        "sha512": "hex(128)"
+      }
+    }
+  }
+  ```
+
+  - Validar ao final:
+    - ingestão integral sem registros parciais;
+    - correspondência entre publicações, metadados, capas e assets remotos;
+    - inexistência de PDF, EPUB ou contêiner local;
+    - ausência de pseudopublicações e resíduos anteriores;
+    - unicidade, deduplicação e consistência dos registros;
+    - validade das URLs, MIME types e hashes;
+    - regeneração correta de índices, mapas e derivados;
+    - funcionamento das pesquisas e demais consumidores sobre a nova base.
