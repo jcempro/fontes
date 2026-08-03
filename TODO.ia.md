@@ -24,7 +24,7 @@
     - dependências e ordem recomendada;
     - impedimentos materiais identificados.
 
-  - Esta TO-DO é perene: NÃO PODE ser marcada como concluída nem removida enquanto existirem outras TO-DOs. Sua existência somente é necessária quando houver ao menos uma TO-DO por ela regida.
+  - Esta TO-DO é perene: NÃO PODE ser marcada como concluída nem removida. Sua existência é perene e persistente. Sua contabilização é necessária apenas quando houver ao menos uma TO-DO por ela regida.
 
 * [ ] Diagnosticar e corrigir de forma robusta e resiliente o erro `Invalid workflow file: .github/workflows/source-intake.yml#L13 — You have an error in your YAML syntax on line 13`.
   - Inspecionar o arquivo integralmente e identificar a causa real, considerando que a linha indicada pelo GitHub PODE ser apenas o ponto de detecção de erro originado anteriormente.
