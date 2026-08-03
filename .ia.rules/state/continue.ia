@@ -1,5 +1,79 @@
 # Estado operacional canônico
 
+## FT-016 — Equalização normativa das TO-DOs do produto
+
+- tipo: `implementacao_normativa`
+- estado: `em_andamento`
+- criado_em: `2026-08-02T22:21:15-03:00`
+- origem: `.ia.rules/state/TODO.ia.md`, SHA-256 normalizado `301206ef9f27fe53ab2933a0bbe6f8edf1b2698fbc31199a0b5f93f3f8b91334`
+- autoridade: `RCF.md`
+- objetivo: equalizar e normatizar integralmente workflow, URLs curtas e assets derivados, segmentação condicionada, ingestão multicanal remota e ingestão definitiva como frentes convergentes do produto.
+- escopo: somente RCF, precedências, dependências, rastreabilidade e critérios verificáveis.
+- fora_de_escopo: código, workflow, scripts, testes executáveis, dependências, build, download, limpeza da base, ingestão e publicação.
+- dependencias: triagem integral da TO-DO e contexto-mestre em `.ia.rules/state/contexts/FT-016/master.md`.
+
+### Etapa 1/2 — Conciliação
+
+- tarefa 1/3: preservar a fonte canônica e decompor as cinco frentes — `concluído`.
+- tarefa 2/3: confrontar RCF, estado real e precedência temporal — `em_andamento`.
+- tarefa 3/3: resolver sobreposições, conflitos e lacunas no contexto-mestre — `concluído`.
+
+### Etapa 2/2 — Normatização
+
+- tarefa 1/3: atualizar contratos e precedências no RCF — `pendente`.
+- tarefa 2/3: vincular critérios de aceite às FTs técnicas — `pendente`.
+- tarefa 3/3: validar a fase normativa e interromper antes do código — `pendente`.
+
+## FT-017 — Validação estrutural dos workflows
+
+- tipo: `implementacao_codigo`
+- estado: `pendente_autorizacao`
+- criado_em: `2026-08-02T22:21:16-03:00`
+- origem: frente de workflow da `FT-016`.
+- objetivo: corrigir a invalidade de `source-intake.yml` e integrar validação preventiva determinística de workflows.
+- dependencias: `FT-016` concluída e autorização humana explícita.
+- aceite: sintaxe YAML, schema/semântica GitHub Actions e `actionlint` ou equivalente válidos, com diagnóstico local de arquivo e linha.
+
+## FT-018 — Reconstrução canônica de URLs curtas e assets
+
+- tipo: `implementacao_codigo`
+- estado: `pendente_autorizacao`
+- criado_em: `2026-08-02T22:21:17-03:00`
+- origem: frente de URL curta da `FT-016`.
+- objetivo: concluir `/<token>`, reconstruir reservas com prioridade `pt-BR`, desambiguar minimamente e sincronizar token, rota e QR Code.
+- dependencias: `FT-016` e `FT-017` concluídas e autorização humana explícita.
+- aceite: unicidade, determinismo, prioridade linguística, ausência operacional de `/_/`, assets regenerados e validação bidirecional.
+
+## FT-019 — Gate de segmentação sob demanda
+
+- tipo: `implementacao_codigo`
+- estado: `pendente_autorizacao`
+- criado_em: `2026-08-02T22:21:18-03:00`
+- origem: frente de segmentação da `FT-016`.
+- objetivo: medir o modelo vigente e alternativas; materializar segmentação somente se o ganho líquido material for comprovado.
+- dependencias: `FT-016` e `FT-017` concluídas e autorização humana explícita.
+- aceite: benchmark reproduzível, equivalência funcional e decisão registrada; se aprovada, fallback, cache, manifesto e consumidores validados.
+
+## FT-020 — Ingestão multicanal remota
+
+- tipo: `implementacao_codigo`
+- estado: `pendente_autorizacao`
+- criado_em: `2026-08-02T22:21:19-03:00`
+- origem: frente de ingestão da `FT-016`.
+- objetivo: centralizar ingestão múltipla por conteúdo, anexo e URL, com manifesto estrutural declarativo, validação remota e persistência local restrita a metadados e capas.
+- dependencias: `FT-016`, `FT-017`, `FT-018` e decisão de `FT-019` concluídas; autorização humana explícita.
+- aceite: canais equivalentes, segurança SSRF/limites/MIME/hashes, deduplicação canônica, transação sem parcial e armazenamento editorial local desativado.
+
+## FT-021 — Reset e ingestão definitiva
+
+- tipo: `implementacao_codigo`
+- estado: `pendente_autorizacao`
+- criado_em: `2026-08-02T22:21:20-03:00`
+- origem: frente terminal de ingestão da `FT-016`.
+- objetivo: limpar estado editorial anterior e ingerir definitivamente o índice remoto normatizado por meio do fluxo validado.
+- dependencias: `FT-017`, `FT-018`, `FT-019` e `FT-020` concluídas; autorização humana explícita específica para a operação destrutiva e remota.
+- aceite: base reproduzível sem resíduos ou contêineres locais, ingestão integral, derivados regenerados e consumidores validados.
+
 ## FT-013 — Norma de sugestão para inclusão de Livro
 
 - tipo: `implementacao_normativa`

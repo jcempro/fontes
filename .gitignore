@@ -1,5 +1,13 @@
 node_modules/
 /.*/
+!/.ia.rules/
+/.ia.rules/*
+!/.ia.rules/state/
+/.ia.rules/state/*
+!/.ia.rules/state/continue.ia
+!/.ia.rules/state/TODO.ia.md
+!/.ia.rules/state/contexts/
+!/.ia.rules/state/contexts/**
 !/.vscode
 !/.github/
 !/.github/workflows/
