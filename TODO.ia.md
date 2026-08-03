@@ -1,7 +1,7 @@
 - [ ] Equalizar e executar as TO-DOs como frentes convergentes de um único objetivo
   - Este item rege a execução de todas as TO-DOs. Cada uma DEVE ser tratada como frente complementar de uma única implementação, conciliada com as demais e orientada ao objetivo principal do projeto.
 
-  - Contradições aparentes entre TO-DOs DEVEM ser interpretadas, salvo evidência contrária, como imprecisão de redação do desenvolvedor e resolvidas por equalização sem perda de intenção, requisito ou nuance.
+  - Contradições aparentes entre TO-DOs DEVEM ser interpretadas, salvo evidência contrária (questione o dev. neste caso), como imprecisão de redação do desenvolvedor e resolvidas por equalização sem perda de intenção, requisito ou nuance.
 
   - O RCF vigente prevalece. Toda alteração DEVE aprimorar o projeto, evoluir capacidade e recursos, preservar compatibilidade e força normativa e NÃO PODE introduzir regressão.
 
