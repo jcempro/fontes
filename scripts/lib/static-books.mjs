@@ -11,7 +11,8 @@ import QRCode from "qrcode";
 
 const execute = promisify(execFile);
 const BASE64URL = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-const ACRONYM_CATEGORIES = new Set(["books", "livros", "book", "devotionals", "devocionais", "devotional"]);
+export const SHORT_TOKEN_PATTERN = /^[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*$/;
+const ACRONYM_CATEGORIES = new Set(["books", "livros", "libros", "book", "livro", "libro", "devotionals", "devocionais", "devocionales", "devotional", "devocional"]);
 const IGNORED_ACRONYM_WORDS = new Set(["a", "an", "and", "as", "da", "das", "de", "do", "dos", "e", "o", "os", "the", "volume", "vol"]);
 
 async function exists(target) {
@@ -45,7 +46,7 @@ export function legacyBookSegments(slug) {
   return [padded.slice(0, 2), padded.slice(2, 4)];
 }
 
-function encodeCounter(value) {
+export function encodeShortCounter(value) {
   if (!Number.isSafeInteger(value) || value < 1) throw new Error(`Contador curto inválido: ${value}`);
   let current = value;
   let result = "";
@@ -56,6 +57,42 @@ function encodeCounter(value) {
   return result;
 }
 
+export function decodeShortCounter(token) {
+  if (!/^[A-Za-z0-9_-]+$/.test(token)) throw new Error(`Token sequencial inválido: ${token}`);
+  let value = 0;
+  for (const character of token) value = value * BASE64URL.length + BASE64URL.indexOf(character);
+  if (!Number.isSafeInteger(value) || value < 1 || encodeShortCounter(value) !== token) throw new Error(`Token sequencial não canônico: ${token}`);
+  return value;
+}
+
+function canonicalLanguage(value) {
+  const normalized = String(value || "").trim().replace(/_/g, "-");
+  try { return Intl.getCanonicalLocales(normalized)[0].toLowerCase(); } catch { throw new Error(`Idioma BCP 47 inválido: ${value}`); }
+}
+
+function languageKey(value) {
+  return canonicalLanguage(value).replace(/-/g, "");
+}
+
+function languageOrder(left, right) {
+  const leftLanguage = canonicalLanguage(left.book.language);
+  const rightLanguage = canonicalLanguage(right.book.language);
+  const leftPriority = leftLanguage === "pt-br" ? 0 : 1;
+  const rightPriority = rightLanguage === "pt-br" ? 0 : 1;
+  return leftPriority - rightPriority || leftLanguage.localeCompare(rightLanguage, "en") || left.book.id.localeCompare(right.book.id, "en");
+}
+
+function shortestLanguageQualifier(language, competingLanguages) {
+  const key = languageKey(language);
+  if (competingLanguages.filter((candidate) => languageKey(candidate) === key).length > 1) return null;
+  const keys = [...new Set(competingLanguages.map(languageKey))];
+  for (let length = 1; length <= key.length; length += 1) {
+    const candidate = key.slice(0, length);
+    if (keys.filter((other) => other.startsWith(candidate)).length === 1) return candidate;
+  }
+  return key;
+}
+
 function preferredAcronym(book) {
   const category = categoryFor(book);
   if (!ACRONYM_CATEGORIES.has(category)) return null;
@@ -64,25 +101,36 @@ function preferredAcronym(book) {
   return words.map((word) => /^\d+$/.test(word) ? word : word[0]).join("");
 }
 
-function assignTokens(inputs) {
+export function assignTokens(inputs, options = {}) {
+  const ordered = [...inputs].sort(languageOrder);
+  const preferredLanguages = new Map();
+  for (const input of ordered) {
+    const preferred = preferredAcronym(input.book);
+    if (!preferred) continue;
+    if (!preferredLanguages.has(preferred)) preferredLanguages.set(preferred, []);
+    preferredLanguages.get(preferred).push(input.book.language);
+  }
+  const structural = new Set([...(options.reservedTokens || []), ...ordered.map((input) => canonicalLanguage(input.book.language))]);
+  const structuralFolded = new Set([...structural].map((token) => token.toLowerCase()));
+  const tombstones = new Set(options.tombstones || []);
+  const previousOwners = new Map(Object.entries(options.previousOwners || {}));
   const used = new Set();
   const assignments = new Map();
   let counter = 1;
-  for (const input of inputs) {
+  const available = (token, bookId) => SHORT_TOKEN_PATTERN.test(token) && !used.has(token) && !structuralFolded.has(token.toLowerCase()) && !tombstones.has(token) && (!previousOwners.has(token) || previousOwners.get(token) === bookId);
+  for (const input of ordered) {
     const preferred = preferredAcronym(input.book);
-    const language = normalizeSegment(input.book.language);
-    const originalFirst = titleWords(input.book.title)[0] || "";
-    const articlePrefixed = preferred && IGNORED_ACRONYM_WORDS.has(originalFirst) ? `${originalFirst[0]}${preferred}` : null;
-    const candidates = preferred ? [preferred, articlePrefixed, `${preferred}-${language}`].filter(Boolean) : [];
-    let token = candidates.find((candidate) => !used.has(candidate));
+    const qualifier = preferred ? shortestLanguageQualifier(input.book.language, preferredLanguages.get(preferred) || [input.book.language]) : null;
+    const candidates = preferred ? [preferred, qualifier && `${preferred}.${qualifier}`].filter(Boolean) : [];
+    let token = candidates.find((candidate) => available(candidate, input.book.id));
     while (!token) {
-      const candidate = encodeCounter(counter++);
-      if (!used.has(candidate)) token = candidate;
+      const candidate = encodeShortCounter(counter++);
+      if (available(candidate, input.book.id)) token = candidate;
     }
     used.add(token);
     assignments.set(input.book.id, token);
   }
-  return { assignments, nextCounter: counter };
+  return { assignments, nextCounter: counter, reservedTokens: [...structural].sort((left, right) => left.localeCompare(right, "en")), tombstones: [...tombstones].sort((left, right) => left.localeCompare(right, "en")) };
 }
 
 async function hashFile(target) {
@@ -184,6 +232,25 @@ async function collectMetadata(directory) {
     else if (entry.isFile() && entry.name === "metadata.json") result.push(target);
   }
   return result;
+}
+
+export async function readShortUrlState(distRoot) {
+  const previousOwners = {};
+  const indexRoot = path.join(distRoot, "d", "_index");
+  let manifest = {};
+  if (await exists(path.join(indexRoot, "manifest.json"))) {
+    try { manifest = JSON.parse(await readFile(path.join(indexRoot, "manifest.json"), "utf8")); } catch { manifest = {}; }
+  }
+  for (const metadataPath of await collectMetadata(path.join(distRoot, "d"))) {
+    try {
+      const metadata = JSON.parse(await readFile(metadataPath, "utf8"));
+      if (metadata.book?.id && SHORT_TOKEN_PATTERN.test(metadata.short_token || "")) previousOwners[metadata.short_token] = metadata.book.id;
+    } catch { /* Estado anterior inválido não adquire autoridade. */ }
+  }
+  return {
+    previousOwners,
+    tombstones: Array.isArray(manifest.tombstones) ? manifest.tombstones.filter((token) => SHORT_TOKEN_PATTERN.test(token)) : [],
+  };
 }
 
 export async function seedPackageCache(distRoot, cacheRoot) {
@@ -301,7 +368,7 @@ function sourceRecord(source, assetId, format, hashes, storageHost) {
   };
 }
 
-export async function materializeBooks({ sourceRoot, distRoot, cacheRoot, qrCacheRoot, publicOrigin, buildConfig = null }) {
+export async function materializeBooks({ sourceRoot, distRoot, cacheRoot, qrCacheRoot, publicOrigin, buildConfig = null, previousShortUrlState = null }) {
   const configuration = buildConfig || { public_origin: publicOrigin };
   const storageHost = new URL(configuration.public_origin).hostname;
   const qr = qrOptions(configuration);
@@ -313,11 +380,14 @@ export async function materializeBooks({ sourceRoot, distRoot, cacheRoot, qrCach
     const input = JSON.parse(await readFile(metadataPath, "utf8"));
     inputs.push({ input, book: input.book, sourceDirectory: path.join(assetsSource, input.book.id) });
   }
-  const { assignments, nextCounter } = assignTokens(inputs);
+  const structuralReservations = buildConfig?.short_urls?.reserved_tokens || ["404", "404.html", "_index", "assets", "d", "index", "index.html"];
+  const shortUrlState = previousShortUrlState || { previousOwners: {}, tombstones: [] };
+  const { assignments, nextCounter, reservedTokens } = assignTokens(inputs, { ...shortUrlState, reservedTokens: structuralReservations });
   const canonicalPaths = new Set();
   const searchItems = [];
   const shortRoutes = {};
   const legacyRoutes = {};
+  const canonicalByBookId = new Map();
   let publishedAssets = 0;
 
   for (const { input, book, sourceDirectory } of inputs) {
@@ -325,6 +395,7 @@ export async function materializeBooks({ sourceRoot, distRoot, cacheRoot, qrCach
     const canonicalPath = `d/${segments.join("/")}/`;
     if (canonicalPaths.has(canonicalPath)) throw new Error(`Colisão de rota canônica: ${canonicalPath}`);
     canonicalPaths.add(canonicalPath);
+    canonicalByBookId.set(book.id, canonicalPath);
     const directory = path.join(distRoot, ...canonicalPath.split("/").filter(Boolean));
     await mkdir(directory, { recursive: true });
     const formats = [];
@@ -384,10 +455,18 @@ export async function materializeBooks({ sourceRoot, distRoot, cacheRoot, qrCach
     legacyRoutes[`_/${token}/`] = canonicalPath;
   }
 
+  const activeTokens = new Set(assignments.values());
+  const tombstones = new Set(shortUrlState.tombstones || []);
+  for (const [previousToken, bookId] of Object.entries(shortUrlState.previousOwners || {})) {
+    if (!activeTokens.has(previousToken)) tombstones.add(previousToken);
+    const canonicalPath = canonicalByBookId.get(bookId);
+    if (canonicalPath && assignments.get(bookId) !== previousToken) legacyRoutes[`_/${previousToken}/`] = canonicalPath;
+  }
+
   const indexRoot = path.join(dRoot, "_index");
   await writeJson(path.join(indexRoot, "search.json"), searchItems);
   await writeJson(path.join(indexRoot, "short.json"), shortRoutes);
   await writeJson(path.join(indexRoot, "legacy.json"), legacyRoutes);
-  await writeJson(path.join(indexRoot, "manifest.json"), { schema_version: 1, books: inputs.length, next_counter: nextCounter, reserved_tokens: [], tombstones: [] });
+  await writeJson(path.join(indexRoot, "manifest.json"), { schema_version: 1, books: inputs.length, next_counter: nextCounter, reserved_tokens: reservedTokens, tombstones: [...tombstones].sort((left, right) => left.localeCompare(right, "en")) });
   return { books: inputs.length, assets: publishedAssets, searchItems: searchItems.length };
 }

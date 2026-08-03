@@ -10,7 +10,7 @@ type Asset = { id: string; format: string; url: string; size: number; source_has
 type Source = { id: string; title: string; url: string; type: string; format: string; provider: string; asset_id: string | null; hashes: Hashes | null };
 type Metadata = { schema_version: 5; book: { id: string; title: string; contributors: Array<{ name: string; role: string }>; edition: Record<string, unknown>; language: string; primary_category: string; tags: string[] }; short_token: string; global_hashes: Array<{ artifact_id: string; format: string } & Hashes>; assets: Asset[]; sources: Source[] };
 type ProcessingState = "initial" | "loading" | "partial" | "content-partial" | "completed" | "error" | "updating";
-type RuntimeConfig = { schema_version: 1; short_url_origin: string; search: { min_query_chars: number; results_per_page: number }; qr_code: { asset_name: string; error_correction_level: string } };
+type RuntimeConfig = { schema_version: 1; short_url_origin: string; search: { min_query_chars: number; results_per_page: number }; short_urls: { schema_version: 1; reserved_tokens: string[] }; qr_code: { asset_name: string; error_correction_level: string } };
 
 export {};
 declare global { namespace JSX { interface IntrinsicElements { [element: string]: Record<string, unknown>; } } }
@@ -77,7 +77,7 @@ async function ensureRuntimeConfig(): Promise<RuntimeConfig> {
   if (runtimeConfigPromise) return runtimeConfigPromise;
   runtimeConfigPromise = cachedJson(rootUrl("d/_index/config.json")).then((data) => {
     const value = data as RuntimeConfig;
-    if (value?.schema_version !== 1 || !/^https:\/\/[^/?#]+$/i.test(value.short_url_origin) || !Number.isSafeInteger(value.search?.min_query_chars) || !Number.isSafeInteger(value.search?.results_per_page) || !value.qr_code?.asset_name) throw new Error("Configuração pública inválida");
+    if (value?.schema_version !== 1 || !/^https:\/\/[^/?#]+$/i.test(value.short_url_origin) || !Number.isSafeInteger(value.search?.min_query_chars) || !Number.isSafeInteger(value.search?.results_per_page) || value.short_urls?.schema_version !== 1 || !Array.isArray(value.short_urls.reserved_tokens) || !value.qr_code?.asset_name) throw new Error("Configuração pública inválida");
     runtimeConfig = value;
     return value;
   }).catch((error) => { runtimeConfigPromise = null; throw error; });
@@ -164,18 +164,18 @@ async function routeFromMap(mapName: "short" | "legacy", key: string): Promise<s
   const routes = await cachedJson(rootUrl(`d/_index/${mapName}.json`)) as Record<string, string>; const route = routes[key];
   return typeof route === "string" && /^d\/[a-z0-9/-]+\/$/.test(route) ? rootUrl(`${route}metadata.json`) : null;
 }
-async function resolveMetadataUrl(): Promise<string | null> {
+async function resolveMetadataUrl(config: RuntimeConfig): Promise<string | null> {
   const canonical = canonicalMetadataFromPath(); if (canonical) return canonical;
-  const short = /^\/([A-Za-z0-9_-]+)\/?$/.exec(location.pathname); if (short) return routeFromMap("short", short[1]);
+  const short = /^\/([A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*)\/?$/.exec(location.pathname); if (short && !config.short_urls.reserved_tokens.some((token) => token.toLowerCase() === short[1].toLowerCase())) return routeFromMap("short", short[1]);
   const legacy = location.pathname.replace(/^\/+|\/+$/g, "") + "/";
-  if (/^(?:_\/[A-Za-z0-9_-]+|data\/[a-z0-9-]+\/[a-z0-9-]+\/[a-z0-9-]+)\/$/.test(legacy)) return routeFromMap("legacy", legacy);
+  if (/^(?:_\/[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*|data\/[a-z0-9-]+\/[a-z0-9-]+\/[a-z0-9-]+)\/$/.test(legacy)) return routeFromMap("legacy", legacy);
   return null;
 }
 async function loadRoute(): Promise<void> {
   const isDirectRoute = location.pathname !== "/" && !/\/(?:index|404)\.html$/.test(location.pathname); const activity = isDirectRoute ? startProcessing("loading", "Analisando a referência…") : 0;
   try {
     const config = await ensureRuntimeConfig();
-    const metadataUrl = await resolveMetadataUrl();
+    const metadataUrl = await resolveMetadataUrl(config);
     if (!metadataUrl) { setView(location.pathname === "/" || /\/(?:index|404)\.html$/.test(location.pathname) ? "landing" : "notFound"); if (activity) finishProcessing(activity, "error", "Referência não encontrada."); return; }
     if (activity) updateProcessing(activity, "partial", "Referência localizada; carregando dados…");
     const data = await cachedJson(metadataUrl, { redirect: "error" }); if (!validMetadata(data)) throw new Error("Metadado schema 5 inválido");

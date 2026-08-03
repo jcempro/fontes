@@ -5,6 +5,10 @@
   "public_origin": "https://fontes.jcem.pro",
   "short_url_origin": "https://f.jcem.pro",
   "search": { "min_query_chars": 5, "results_per_page": 8 },
+  "short_urls": {
+    "schema_version": 1,
+    "reserved_tokens": ["404", "404.html", "_index", "assets", "d", "index", "index.html"]
+  },
   "qr_code": {
     "asset_name": "short-url.svg",
     "generator_version": 1,

@@ -7,7 +7,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { build as esbuild } from "esbuild";
 import * as sass from "sass";
-import { materializeBooks, seedPackageCache } from "./lib/static-books.mjs";
+import { materializeBooks, readShortUrlState, seedPackageCache } from "./lib/static-books.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_ROOT = path.join(ROOT, "src");
@@ -47,6 +47,7 @@ async function listFiles(directory) {
 async function main() {
   await assertPublicSource();
   const buildConfig = JSON.parse(await readFile(BUILD_CONFIG_PATH, "utf8"));
+  const previousShortUrlState = await readShortUrlState(DIST_ROOT);
   const seededPackages = await seedPackageCache(DIST_ROOT, PACKAGE_CACHE_ROOT);
   if (path.dirname(DIST_ROOT) !== ROOT || path.basename(DIST_ROOT) !== "dist") throw new Error("Destino de build inválido");
   await rm(DIST_ROOT, { force: true, recursive: true });
@@ -63,12 +64,13 @@ async function main() {
     schema_version: 1,
     short_url_origin: buildConfig.short_url_origin,
     search: buildConfig.search,
+    short_urls: buildConfig.short_urls,
     qr_code: {
       asset_name: buildConfig.qr_code?.asset_name,
       error_correction_level: buildConfig.qr_code?.error_correction_level,
     },
   })}\n`, "utf8");
-  const generated = await materializeBooks({ sourceRoot: SOURCE_ROOT, distRoot: DIST_ROOT, cacheRoot: PACKAGE_CACHE_ROOT, qrCacheRoot: QR_CACHE_ROOT, buildConfig });
+  const generated = await materializeBooks({ sourceRoot: SOURCE_ROOT, distRoot: DIST_ROOT, cacheRoot: PACKAGE_CACHE_ROOT, qrCacheRoot: QR_CACHE_ROOT, buildConfig, previousShortUrlState });
   await writeFile(path.join(DIST_ROOT, ".nojekyll"), "", "utf8");
   const leaked = (await listFiles(DIST_ROOT)).find((file) => path.relative(DIST_ROOT, file).split(path.sep).includes("src"));
   if (leaked) throw new Error(`Prefixo src/ exposto no artefato: ${path.relative(DIST_ROOT, leaked)}`);

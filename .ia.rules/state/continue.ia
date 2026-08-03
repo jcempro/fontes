@@ -54,12 +54,21 @@
 ## FT-018 — Reconstrução canônica de URLs curtas e assets
 
 - tipo: `implementacao_codigo`
-- estado: `pendente_autorizacao`
+- estado: `concluida`
 - criado_em: `2026-08-02T22:21:17-03:00`
 - origem: frente de URL curta da `FT-016`.
 - objetivo: concluir `/<token>`, reconstruir reservas com prioridade `pt-BR`, desambiguar minimamente e sincronizar token, rota e QR Code.
 - dependencias: `FT-016` e `FT-017` concluídas e autorização humana explícita.
 - aceite: unicidade, determinismo, prioridade linguística, ausência operacional de `/_/`, assets regenerados e validação bidirecional.
+
+### Execução FT-018
+
+- autorização: solicitação humana de implementar FT-017 a FT-019 nesta tarefa.
+- resultado: alocador determinístico reconstruído com prioridade `pt-BR`, qualificador BCP 47 mínimo com `.`, fallback Base64URL, reservas estruturais centrais, tombstones e aliases históricos; resolução corrente usa `/<token>` e mantém `/_/` somente no mapa legado.
+- QR Code: geração permanece derivada exclusivamente de `short_url_origin` e do token canônico; validação agora decodifica o SVG e exige igualdade atômica com a URL registrada.
+- validação: `SHORT_URL_OK books=3 base=cc qualifiers=en,es counter_roundtrips=4095 qr=decoded`; `npm run typecheck`; `git diff --check`.
+- observação: não há `src/data/books` nem distribuição prévia nesta etapa; nenhuma implementação de empacotamento local foi eliminada, e a regeneração integral dos assets reais permanece condicionada à futura carga autorizada.
+- bloqueio: nenhum para o contrato e sua implementação; validação com acervo real depende da FT de ingestão.
 
 ## FT-019 — Gate de segmentação sob demanda
 
