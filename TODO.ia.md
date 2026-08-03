@@ -59,40 +59,57 @@
 
   - Concluir somente quando os resultados permanecerem equivalentes aos atuais e os benchmarks comprovarem redução material de atraso ou tráfego sem regressão líquida.
 
-* [ ] Ampliar a ingestão de (multiplas) publicações por conteúdo direto, anexo ou fonte remota
-  - Preservar os formatos atuais de solicitação por Issue/TO-DO e permitir, para JSON, YAML, TXT ou equivalente:
-    - conteúdo inserido diretamente;
+* [ ] Ampliar a ingestão de múltiplas publicações por conteúdo direto, anexo ou fonte remota
+  - Preservar os formatos atuais de solicitação por Issue/TO-DO e aceitar JSON, YAML, TXT ou equivalente por:
+    - conteúdo direto;
     - arquivo anexado, implementando o suporte se inexistente;
-    - URL de arquivo (yaml/json/txt) remoto contendo URLs e metadados das publicações.
+    - URL remota de arquivo contendo URLs e metadados de uma ou mais publicações.
 
-  O conteúdo do yaml/json/txt deve seguir o já normatizado no RCF sem o contradizer, considerando aprimoramentos que não regridam...
-  - A obtenção remota DEVE validar protocolo, redirecionamentos, domínio quando aplicável, tamanho, timeout, formato e conteúdo; impedir SSRF, acesso a recursos locais, downloads ilimitados e interpretação de conteúdo incompatível.
+  - Os formatos DEVEM permanecer aderentes ao RCF vigente. Aprimoramentos PODEM ampliar tolerância e interoperabilidade, mas NÃO DEVEM contradizer contratos existentes nem causar regressão.
+
+  - A obtenção remota DEVE validar protocolo, redirecionamentos, origem quando aplicável, tamanho, timeout, formato e conteúdo, impedindo SSRF, acesso a recursos locais, downloads ilimitados e interpretação incompatível.
+
   - O parser DEVE:
     - percorrer recursivamente objetos, listas e estruturas aninhadas;
-    - reconhecer publicações mesmo fora do modelo recomendado;
-    - tolerar agrupamentos distintos, metadados adicionais e aliases inequívocos;
-    - extrair múltiplas publicações do mesmo documento;
-    - não inferir campos ambíguos nem confundir chaves semanticamente incompatíveis;
-    - registrar itens ignorados e exigir resolução quando a correspondência não for segura.
+    - extrair múltiplas publicações, inclusive fora do modelo recomendado;
+    - tolerar agrupamentos distintos, metadados adicionais e aliases semanticamente inequívocos;
+    - não inferir campos ambíguos nem equiparar chaves incompatíveis;
+    - registrar itens ignorados e interromper a incorporação quando a correspondência não for segura.
 
-  - Permitir opcionalmente um **mapa estrutural** JSON/YAML que associe campos externos aos campos de ingestão do repositório, inclusive por caminhos aninhados, listas e estruturas repetidas. O mapa DEVE ser validado, determinístico e incapaz de executar código ou alterar contratos internos.
+  - O informante PODE fornecer mapa estrutural JSON/YAML associando campos externos aos campos de ingestão, inclusive por caminhos aninhados, listas e estruturas repetidas. O mapa DEVE ser validado, determinístico, declarativo e incapaz de executar código ou alterar contratos internos.
+    - neste caso, o script deste repositório deve ser capaz de lidar com isso.
+    - o RCF deve normatizar o funcionamento.
+    - deve haver documentação clara explicando como fazer o mapa.
 
-  - Dados externos constituem entrada candidata, NÃO fonte normativa do repositório:
+  - Dados externos constituem entrada candidata, NÃO fonte normativa:
     - IDs, códigos, _short URLs_, tags, categorias, estados e relações externas NÃO DEVEM ser assimilados como identificadores internos;
-    - o repositório DEVE detectar publicação existente, deduplicar, compatibilizar ou criar registros e administrar seus próprios IDs, códigos, _short URLs_, tags e relações;
-    - título, autor, URL de PDF/EPUB e capa PODEM ser importados, mas DEVEM ser normalizados, validados e conciliados com o estado canônico;
-    - campos desconhecidos DEVEM ser ignorados ou preservados apenas em área explicitamente destinada a metadados externos, nunca convertidos silenciosamente em regras internas.
+    - o repositório DEVE detectar registros existentes, deduplicar, compatibilizar ou criar publicações e administrar seus próprios IDs, códigos, _short URLs_, tags e relações;
+    - título, autor, capa e URLs de PDF/EPUB PODEM ser importados, mas DEVEM ser normalizados, verificados e conciliados com o estado canônico;
+    - campos desconhecidos DEVEM ser ignorados ou preservados exclusivamente como metadados externos, jamais convertidos silenciosamente em regras internas.
 
-  - Centralizar obtenção, parsing, mapeamento, normalização, validação, deduplicação e incorporação para todos os canais de entrada.
+  - Somente metadados e capas DEVEM ser incorporados fisicamente ao repositório. PDF, EPUB e respectivos arquivos compactados NÃO DEVEM ser copiados ou clonados; apenas suas URLs DEVEM ser registradas.
+
+  - Antes do registro, cada asset remoto DEVE ser efetivamente validado quanto a:
+    - disponibilidade e resposta HTTP;
+    - formato real por MIME type e conteúdo, não apenas extensão;
+    - correspondência com PDF ou EPUB declarado;
+    - integridade e compatibilidade dos hashes informados;
+    - ausência de confiança automática em metadados fornecidos por terceiros.
+
+  - O recurso existente que permite armazenar PDF, EPUB ou equivalentes ZIP/7z no repositório DEVE ser desabilitado, segregado e totalmente desvinculado do fluxo ativo, sem ser eliminado.
+
+  - Centralizar obtenção, parsing, mapeamento, normalização, validação, deduplicação e incorporação para todos os canais.
 
   - Normatizar no RCF:
-    - formatos e canais aceitos;
+    - canais e formatos aceitos;
     - descoberta recursiva;
     - contrato do mapa estrutural;
-    - aliases permitidos;
-    - precedência e autoridade dos dados;
-    - tratamento de ambiguidades, duplicidades e campos externos.
+    - aliases admitidos;
+    - autoridade e precedência dos dados;
+    - ambiguidades, duplicidades e campos externos;
+    - política de incorporação de metadados, capas e referências remotas;
+    - segregação do armazenamento local desativado.
 
-  - Documentar sucintamente exemplos de conteúdo direto, anexo, URL remota, estruturas aninhadas e mapa estrutural personalizado.
+  - Documentar sucintamente conteúdo direto, anexo, URL remota, múltiplas publicações, estruturas aninhadas e mapa estrutural personalizado.
 
-  - Validar com estruturas padrão, profundamente aninhadas, heterogêneas, mapeadas, ambíguas, malformadas, remotas, duplicadas e contendo identificadores externos conflitantes.
+  - Validar estruturas padrão, profundas, heterogêneas, mapeadas, ambíguas, malformadas, remotas, duplicadas e com identificadores externos conflitantes, além de MIME, hashes, links inválidos e indisponibilidade remota.
