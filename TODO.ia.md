@@ -80,6 +80,7 @@
     - neste caso, o script deste repositório deve ser capaz de lidar com isso ser resiliente quanto ao rigor, no sentido de ser tolerante a multiplicidade, formas, estilos e expressividades.
     - o RCF deve normatizar o funcionamento.
     - deve haver documentação clara explicando como fazer o mapa/manifesto.
+      - MAPA/MANIFESTO: é uma definição estrutural invariável do contrato: quais blocos existem, sua cardinalidade e quais campos compõem cada um — igual para índice vazio, parcial ou completo.
 
   - Dados externos constituem entrada candidata, NÃO fonte normativa:
     - IDs, códigos, _short URLs_, tags, categorias, estados e relações externas NÃO DEVEM ser assimilados como identificadores internos;
