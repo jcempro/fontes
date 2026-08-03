@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "corpus": {
+    "source": "git:f240cc3^:src/data/books/*/metadata.json",
+    "books": 527,
+    "note": "Somente métricas agregadas; nenhuma pseudopublicação foi restaurada."
+  },
+  "network": {
+    "label": "slow-400kbps-180ms",
+    "bytes_per_second": 50000,
+    "rtt_ms": 180
+  },
+  "thresholds": {
+    "transfer_reduction": 0.25,
+    "first_result_reduction": 0.2,
+    "max_extra_requests": 1,
+    "max_aggregate_growth": 0.25
+  },
+  "current": {
+    "aggregate_bytes": 7208,
+    "title": {
+      "cold": {
+        "bytes": 7208,
+        "requests": 1,
+        "first_result_ms": 324
+      },
+      "warm": {
+        "bytes": 0,
+        "requests": 0,
+        "first_result_ms": 0
+      },
+      "memory_bytes": 21944,
+      "cpu_records_scanned": 527
+    },
+    "short_url": {
+      "cold": {
+        "bytes": 2750,
+        "requests": 1,
+        "first_result_ms": 235
+      },
+      "warm": {
+        "bytes": 0,
+        "requests": 0,
+        "first_result_ms": 0
+      },
+      "memory_bytes": 8456,
+      "cpu_records_scanned": 527
+    }
+  },
+  "short_url_partitions": [
+    {
+      "prefix_length": 1,
+      "aggregate_bytes": 4597,
+      "max_segment_books": 65,
+      "sample": {
+        "cold": {
+          "bytes": 455,
+          "requests": 2,
+          "first_result_ms": 369
+        },
+        "warm": {
+          "bytes": 0,
+          "requests": 0,
+          "first_result_ms": 0
+        },
+        "memory_bytes": 1277,
+        "cpu_records_scanned": 65
+      }
+    },
+    {
+      "prefix_length": 2,
+      "aggregate_bytes": 17342,
+      "max_segment_books": 10,
+      "sample": {
+        "cold": {
+          "bytes": 936,
+          "requests": 2,
+          "first_result_ms": 379
+        },
+        "warm": {
+          "bytes": 0,
+          "requests": 0,
+          "first_result_ms": 0
+        },
+        "memory_bytes": 2184,
+        "cpu_records_scanned": 1
+      }
+    }
+  ],
+  "title_term_map": {
+    "aggregate_bytes": 18719,
+    "term_map_bytes": 8833,
+    "max_segment_books": 201,
+    "scenarios": {
+      "common": {
+        "query": "church",
+        "selected_segments": 7,
+        "results": 72,
+        "equivalent": true,
+        "current": {
+          "cold": {
+            "bytes": 7208,
+            "requests": 1,
+            "first_result_ms": 324
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 21944,
+          "cpu_records_scanned": 527
+        },
+        "segmented": {
+          "cold": {
+            "bytes": 15152,
+            "requests": 8,
+            "first_result_ms": 1743
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 70289,
+          "cpu_records_scanned": 380
+        }
+      },
+      "incomplete": {
+        "query": "churc",
+        "selected_segments": 7,
+        "results": 72,
+        "equivalent": true,
+        "current": {
+          "cold": {
+            "bytes": 7208,
+            "requests": 1,
+            "first_result_ms": 324
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 21944,
+          "cpu_records_scanned": 527
+        },
+        "segmented": {
+          "cold": {
+            "bytes": 15152,
+            "requests": 8,
+            "first_result_ms": 1743
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 70289,
+          "cpu_records_scanned": 380
+        }
+      },
+      "worst_case": {
+        "query": "healt",
+        "selected_segments": 9,
+        "results": 16,
+        "equivalent": true,
+        "current": {
+          "cold": {
+            "bytes": 7208,
+            "requests": 1,
+            "first_result_ms": 324
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 21944,
+          "cpu_records_scanned": 527
+        },
+        "segmented": {
+          "cold": {
+            "bytes": 14801,
+            "requests": 10,
+            "first_result_ms": 2096
+          },
+          "warm": {
+            "bytes": 0,
+            "requests": 0,
+            "first_result_ms": 0
+          },
+          "memory_bytes": 68279,
+          "cpu_records_scanned": 353
+        }
+      }
+    }
+  },
+  "equivalence": {
+    "results_and_order": true
+  },
+  "decision": {
+    "approved": false,
+    "action": "preservar_modelo_vigente",
+    "reasons": [
+      "títulos não venceram o gate material",
+      "URLs curtas não venceram o gate material",
+      "crescimento agregado excessivo"
+    ]
+  }
+}

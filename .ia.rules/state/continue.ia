@@ -73,12 +73,23 @@
 ## FT-019 — Gate de segmentação sob demanda
 
 - tipo: `implementacao_codigo`
-- estado: `pendente_autorizacao`
+- estado: `concluida`
 - criado_em: `2026-08-02T22:21:18-03:00`
 - origem: frente de segmentação da `FT-016`.
 - objetivo: medir o modelo vigente e alternativas; materializar segmentação somente se o ganho líquido material for comprovado.
 - dependencias: `FT-016` e `FT-017` concluídas e autorização humana explícita.
 - aceite: benchmark reproduzível, equivalência funcional e decisão registrada; se aprovada, fallback, cache, manifesto e consumidores validados.
+
+### Execução FT-019
+
+- autorização: solicitação humana de implementar FT-017 a FT-019 nesta tarefa.
+- corpus: distribuição real histórica imediatamente anterior à remoção recuperável, com `527` metadados lidos diretamente do Git; nenhuma pseudopublicação foi restaurada.
+- cenários: cache frio e quente, conexão representativa de `400 kbps` e `180 ms` de RTT, consulta comum, incompleta e pior caso; comparação do índice vigente, partições de URL curta por um e dois caracteres e mapa de termos/títulos.
+- equivalência: resultados e ordenação idênticos nos cenários medidos.
+- decisão: `preservar_modelo_vigente`; a segmentação candidata não venceu o gate de redução material, aumentou requisições e elevou o tamanho agregado.
+- evidência: `.ia.rules/state/contexts/FT-019/benchmark.json`; `INDEX_BENCHMARK_OK books=527 source=real equivalent=true decision=preservar_modelo_vigente`.
+- efeito: nenhum segmento, manifesto ou consumidor novo foi materializado.
+- bloqueio: nenhum.
 
 ## FT-020 — Ingestão multicanal remota
 

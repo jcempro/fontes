@@ -59,7 +59,8 @@
   - Sempre que possível, centralizar a geração em uma única fonte canônica e automatizar atualização e validação por scripts, hooks ou workflows já previstos, impedindo recorrência do descasamento e reduzindo processamento manual ou pela IA.
   - Não ampliar o escopo além da migração, da correção integral dos assets, da coerência normativa associada e das FTs em andamento necessárias à conclusão segura.
 
-- [ ] Avaliar e, somente se houver ganho líquido comprovável, segmentar os índices para carregamento sob demanda
+- [x] Avaliar e, somente se houver ganho líquido comprovável, segmentar os índices para carregamento sob demanda
+  - Decisão da FT-019: preservar o modelo vigente; o benchmark real reproduzível manteve equivalência, mas não comprovou ganho líquido material para segmentação.
   - Preservar integralmente a arquitetura, aderência, determinismo e otimizações atuais de banco de dados, pesquisa e indexação, inclusive para _short URLs_ e demais modalidades. A segmentação NÃO DEVE substituir o método vigente, apenas complementá-lo quando tecnicamente vantajosa.
 
   - Inspecionar o fluxo real de geração, publicação, seleção, download, cache, invalidação e consulta dos índices; medir tamanho, latência, número de requisições, repetição de downloads, custo de processamento, desempenho em conexões lentas e impacto sobre cliente, servidor, build e manutenção.

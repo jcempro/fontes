@@ -22,6 +22,7 @@
     "test:issue-intake": "node scripts/test-issue-source-intake.mjs",
     "test:short-urls": "node scripts/test-short-urls.mjs",
     "test:workflows": "node scripts/validate-workflows.mjs --self-test",
+    "benchmark:indexes": "node scripts/benchmark-indexes.mjs --write",
     "validate:workflows": "node scripts/validate-workflows.mjs",
     "egw:import": "node scripts/import-egw.mjs",
     "egw:validate": "node scripts/import-egw.mjs --check",
