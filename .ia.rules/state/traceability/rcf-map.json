@@ -1,0 +1,1137 @@
+{
+  "format": "agents-rcf-trace/v1",
+  "schema": 1,
+  "entries": [
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "d815371873a9e8b5362058dc",
+      "line": 15,
+      "rcf": "RCF.md",
+      "sentenceSha256": "23a1286e3615ad82fbe6d419712c18c564012f010fff4747c7246b82a6bcbce0",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "945459d2505f202fbc5936d8",
+      "line": 59,
+      "rcf": "RCF.md",
+      "sentenceSha256": "9feb598706953c16dcdac187a723d84b2762b92e676508e1c20665e9f9f9609c",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/build-site.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/validate-dist.mjs",
+        "src/404.html"
+      ],
+      "commit": "",
+      "ft": "FT-018",
+      "id": "aa57963cdbbb33d01021ccc0",
+      "line": 70,
+      "rcf": "RCF.md",
+      "sentenceSha256": "a8f2c64328fe06928dbe809df990f6ccde035e5dadc6deada2f3622363084ded",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/build-site.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/validate-dist.mjs",
+        "src/404.html"
+      ],
+      "commit": "",
+      "ft": "FT-018",
+      "id": "adc3c3ffe593d41edc3d62fe",
+      "line": 73,
+      "rcf": "RCF.md",
+      "sentenceSha256": "89c1a80fbf79b95467e84c0e728e5853dab73771cce8a77f470e8084834ba8bd",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/build-site.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/validate-dist.mjs",
+        "src/404.html"
+      ],
+      "commit": "",
+      "ft": "FT-018",
+      "id": "f99a5f1836bc29f392325d53",
+      "line": 74,
+      "rcf": "RCF.md",
+      "sentenceSha256": "95fb8f17b6f6f15fd880c870d26cb427b44cb91c463a357e366c453b08698e58",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/build-site.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/validate-dist.mjs",
+        "src/404.html"
+      ],
+      "commit": "",
+      "ft": "FT-018",
+      "id": "4f0c0bcd8d29ee639450f86c",
+      "line": 75,
+      "rcf": "RCF.md",
+      "sentenceSha256": "b6d0884a86c5b0a60a3766db384d3be765d3c16f8a175637a426db91b475050a",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "d41a54f41b0cdbf2d8922ccd",
+      "line": 87,
+      "rcf": "RCF.md",
+      "sentenceSha256": "eb7628d508a03c77436b2d968d886266ee0cb679623dbb598b1708323c11a4fe",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "4cb8285a933f8b9b82069e4c",
+      "line": 100,
+      "rcf": "RCF.md",
+      "sentenceSha256": "42eace79295b4c12dc300e928e2ffa7d9d3d1c602bfa338e6438ae9ee5c7bccf",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "4f5ce2228c9ed6ef59a23105",
+      "line": 101,
+      "rcf": "RCF.md",
+      "sentenceSha256": "47c4356139ae180805137990d05becfd62db1ede932cb8a91cb26b08e3dff575",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "e4f41c2becde36269eb26764",
+      "line": 102,
+      "rcf": "RCF.md",
+      "sentenceSha256": "20cf16565deff164f490a234572f49b024b679b0edc793c366df8692f50a9265",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/build-site.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/validate-dist.mjs",
+        "src/404.html"
+      ],
+      "commit": "",
+      "ft": "FT-018",
+      "id": "00b882c5a82e7bc8e32d9b06",
+      "line": 116,
+      "rcf": "RCF.md",
+      "sentenceSha256": "0791fbc92343195b1e069691ed52e8c6680539d68e51b92551ae0a02c3b32039",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "c6f446f8add99a0fef928500",
+      "line": 118,
+      "rcf": "RCF.md",
+      "sentenceSha256": "fff45e7f01d51b6bf666ce28c0563da92943c463234b776d07303c751d906f84",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "f53c029366ce849dde28173f",
+      "line": 121,
+      "rcf": "RCF.md",
+      "sentenceSha256": "7798ee5f4060d8a7ffc819a81e50ce6e0edb203e7d4c626a615b0f500ffdb8bc",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "2a3a18e21be2e9c78cd45341",
+      "line": 123,
+      "rcf": "RCF.md",
+      "sentenceSha256": "c1cf3d4434e80fd537910b34455bc03a22b12c5d23f3bbf6b5e658a6ca989ac6",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "950d56f0cf303361177b5f93",
+      "line": 124,
+      "rcf": "RCF.md",
+      "sentenceSha256": "44d6dd708dfc3beee086983a3d88529e7b0129fc2f9208cea1cda06a193481f8",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "0f859f40fec6f66d147a55e9",
+      "line": 125,
+      "rcf": "RCF.md",
+      "sentenceSha256": "f04407a3febd40a6aa5afa42ea5733861826e28c9d7c2bef93f96d346ecdd7d8",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "368cb7ff6a34704a301b0de0",
+      "line": 126,
+      "rcf": "RCF.md",
+      "sentenceSha256": "91fdf5befd81755cdb338cf5a75bee5cc05121fdad8760351c208a012319d8bd",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "171193b1036755b57bf949db",
+      "line": 127,
+      "rcf": "RCF.md",
+      "sentenceSha256": "d483fc6d63e320ef928ffdbe3bf5e9b0631fb96920800ab2d14a5ac435a5f1dd",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "dcf2d730aa5ff3df479b176f",
+      "line": 133,
+      "rcf": "RCF.md",
+      "sentenceSha256": "9eff15c87a70bbe23abb79ae3d11b6a57a8986f2158171d37a78ec10fc1a3b87",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/build-site.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/validate-dist.mjs",
+        "src/404.html"
+      ],
+      "commit": "",
+      "ft": "FT-018",
+      "id": "4aa5cbb6edcc9a9a9ff9a212",
+      "line": 153,
+      "rcf": "RCF.md",
+      "sentenceSha256": "adadbf2bda47bd56637b1cd04aacb82ef91afbfa2ecdc2b2796a1c0b391a67c9",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "dbf85e3795875e32e143747d",
+      "line": 222,
+      "rcf": "RCF.md",
+      "sentenceSha256": "43727ae6a01d78a58048f9655a9419665cb73ef8b92d7ad8f3c49083929a447d",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "bba3e426fc4c9d12a34c92e7",
+      "line": 224,
+      "rcf": "RCF.md",
+      "sentenceSha256": "ef4d9b6bc1a963ca93542a87f96f29bb7c02785c0c45e4ec4f5a5ae36b262af2",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "aa2be13cbed3186256b6527a",
+      "line": 252,
+      "rcf": "RCF.md",
+      "sentenceSha256": "550e2b6b734f321751aa6b720be22f204779dafb0eb81ac66dbd93bd6c2251f8",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "72f8432a913952f81813d55e",
+      "line": 253,
+      "rcf": "RCF.md",
+      "sentenceSha256": "2578b866ea329e1f04918da3330511833db740885a339bc8a172b411f58daae0",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "fe33b679f94483bf01a448e6",
+      "line": 254,
+      "rcf": "RCF.md",
+      "sentenceSha256": "de5103a02655ca1e1fda158eb0fa0282ab30d52ad56562318d39bd9388709b8b",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "1ad0440e0e02f92bd7b66aa9",
+      "line": 255,
+      "rcf": "RCF.md",
+      "sentenceSha256": "f72b3d2359834f507e7a85a330b110bdb105d5e5e26f1b3f882f1fd282a616ee",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "44cc66c77121219bd12bea42",
+      "line": 259,
+      "rcf": "RCF.md",
+      "sentenceSha256": "222a1e29ebccd378d3ba387a3a4cd42a899f35e3f92297c8d9814e2c060e19d7",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "5fd7d7dccce5ccdbea9aa2a9",
+      "line": 260,
+      "rcf": "RCF.md",
+      "sentenceSha256": "78354aa1517ffca969e77f1192023c37433de37cb0d0ac13e24355143de52f8c",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/build-site.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/validate-dist.mjs",
+        "src/404.html"
+      ],
+      "commit": "",
+      "ft": "FT-018",
+      "id": "4825743e9e9e4a6298b663ef",
+      "line": 264,
+      "rcf": "RCF.md",
+      "sentenceSha256": "95d43f7b35664ab139552c519ba8efdd89176f5b6d884fb34e3932be0ac84ba8",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "de2d12801b2129231295f9ae",
+      "line": 265,
+      "rcf": "RCF.md",
+      "sentenceSha256": "6f4e5e4a4be3a489cffd8f1f83cc186e5f747274009ae9fb437aa65573d12452",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/build-site.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/validate-dist.mjs",
+        "src/404.html"
+      ],
+      "commit": "",
+      "ft": "FT-018",
+      "id": "d7764bb747b4b66993b98d0c",
+      "line": 269,
+      "rcf": "RCF.md",
+      "sentenceSha256": "ee55aa9dc6a1f5e8d39edb577409669cd19bcbc868b74df6014f68e9239c07f0",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/benchmark-indexes.mjs",
+        "scripts/build-site.mjs",
+        "src/app/app.tsx"
+      ],
+      "commit": "",
+      "ft": "FT-019",
+      "id": "12fe7ea736fa9554846551c1",
+      "line": 279,
+      "rcf": "RCF.md",
+      "sentenceSha256": "bc20e0649c032052f2a9a411b76210ac5087aa8f2e37de060cc99f439fa57af0",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/benchmark-indexes.mjs",
+        "scripts/build-site.mjs",
+        "src/app/app.tsx"
+      ],
+      "commit": "",
+      "ft": "FT-019",
+      "id": "735540039ac8ffe4bba6636e",
+      "line": 280,
+      "rcf": "RCF.md",
+      "sentenceSha256": "6ca38fab811468c1ee2c9f058a79252086bc9ec2027f263d606e9979ed8af7d6",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/benchmark-indexes.mjs",
+        "scripts/build-site.mjs",
+        "src/app/app.tsx"
+      ],
+      "commit": "",
+      "ft": "FT-019",
+      "id": "48b99dd2dcd1c5e8995f101e",
+      "line": 281,
+      "rcf": "RCF.md",
+      "sentenceSha256": "c263bd611133f01e49dc6e690567e2dff5618f5873adb3ad0e99f99602149d6c",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/benchmark-indexes.mjs",
+        "scripts/build-site.mjs",
+        "src/app/app.tsx"
+      ],
+      "commit": "",
+      "ft": "FT-019",
+      "id": "5550c9ece706eede73cb0338",
+      "line": 282,
+      "rcf": "RCF.md",
+      "sentenceSha256": "4bc8efbb9a25ff9465332eaa7bbb9d05c63b1d5ac4e5aa290d6cdc5280a7a874",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "8b093ce834992a20b227dc38",
+      "line": 299,
+      "rcf": "RCF.md",
+      "sentenceSha256": "5e4f27a7071ec691068d12a3a30e3d442ecf75be12934ebd981931ac0b5e2cf3",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "653ea4925d23ee483f4827a5",
+      "line": 323,
+      "rcf": "RCF.md",
+      "sentenceSha256": "0cb661663d0d32a1b9940add0636c29eed72b5acb2bcf27dbc6437da5da8cb23",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "e47e4437861ec9a5ad2a3cfb",
+      "line": 324,
+      "rcf": "RCF.md",
+      "sentenceSha256": "ecbd102c4974c94a2d4ac97e32ec4e26847840ccebda6551a957b3d9b4933682",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "d5ad8392cb08d3c8b9bb6c77",
+      "line": 325,
+      "rcf": "RCF.md",
+      "sentenceSha256": "588f0045ea55d8e70cc57e61c5c4a3344a517b7042c293b6424799ae1a27e134",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        ".github/workflows/source-intake.yml",
+        "package.json",
+        "scripts/validate-workflows.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-017",
+      "id": "3269c8a01dd01b8906d59cdb",
+      "line": 339,
+      "rcf": "RCF.md",
+      "sentenceSha256": "ac43f3abfa8bc3c54baf82931c1ee6c24da1383f0dbbadc090d349e1491981dd",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        ".github/workflows/source-intake.yml",
+        "package.json",
+        "scripts/validate-workflows.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-017",
+      "id": "a11cef838f243ed6b891e785",
+      "line": 340,
+      "rcf": "RCF.md",
+      "sentenceSha256": "39060aef2e2203d29d22e2b1b0ec82f89b6fcce54ced736d958d33d68cde4286",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "9e3ea2d5a32dc96aa5b54dd0",
+      "line": 352,
+      "rcf": "RCF.md",
+      "sentenceSha256": "320761c254cf9594057e4a6baa41e2ee16ff34b76cb622c944cc4f4d2abbade7",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "7ddbb001a31490f07daca329",
+      "line": 367,
+      "rcf": "RCF.md",
+      "sentenceSha256": "62a8725699a206cdaf093b543c44d9138791111f4d982c5f412992b809453f11",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "fe749640cacacdc58ffd2fc8",
+      "line": 368,
+      "rcf": "RCF.md",
+      "sentenceSha256": "add5dedf33d8d71429ee75eca3386693b10cacbddd10fc667d52e0b07d4f370e",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "f79d3f68b9fae0d2bff55c3a",
+      "line": 369,
+      "rcf": "RCF.md",
+      "sentenceSha256": "a65e4d1f36b17584b03018d76f790b170ade6fe976c0e33236a2b9966d9a9ba6",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "1a146b6e0eda3db374608803",
+      "line": 370,
+      "rcf": "RCF.md",
+      "sentenceSha256": "cdbc9be3dfcc5528f6f19f1a53100d2b9a0365ee0c8d1a850f976a2774867cc9",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "ad815a73415cbff26beb04d2",
+      "line": 371,
+      "rcf": "RCF.md",
+      "sentenceSha256": "678f3ffdd20ed1a492c7db464aaf8660e3f41534a364f1c7b133f1ee84bc7582",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "39f6b7e94ef01ffedf58b832",
+      "line": 372,
+      "rcf": "RCF.md",
+      "sentenceSha256": "6eb20e598344896c4ca33fd29bcd00c4f45b4255a6e8195659e577b207536c1d",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "54784ad9366c398cf1c47691",
+      "line": 373,
+      "rcf": "RCF.md",
+      "sentenceSha256": "fb3eeccfa0660b347e02be3c75f9079111fc0a772759e9a2b427bab0f4fea6ef",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "a6896f81250fcff1182fbdfb",
+      "line": 374,
+      "rcf": "RCF.md",
+      "sentenceSha256": "3eeb738027578a582e743ea8b81d6bec443b4dd4eb0f15ac36efd0bc4dbc6fcc",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/validate-dist.mjs",
+        "src/d"
+      ],
+      "commit": "",
+      "ft": "FT-021",
+      "id": "f7dd8447ace42030aa3b9855",
+      "line": 375,
+      "rcf": "RCF.md",
+      "sentenceSha256": "40e24308a6ff526d9b25c0b9e1710b374fd1fd47c52f56c503923e64ed877193",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/validate-dist.mjs",
+        "src/d"
+      ],
+      "commit": "",
+      "ft": "FT-021",
+      "id": "71af1247c53b670645202cf9",
+      "line": 376,
+      "rcf": "RCF.md",
+      "sentenceSha256": "27451ba52c85b6f7b8ba8874128d89d0c755625ad375d731767c79fedfee1e4b",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/validate-dist.mjs",
+        "src/d"
+      ],
+      "commit": "",
+      "ft": "FT-021",
+      "id": "1cfa6ff5b269507c9895c72d",
+      "line": 377,
+      "rcf": "RCF.md",
+      "sentenceSha256": "7e587e735c39e492082947d3c4aff0017625c6c0d23147688cd61acd64b1ac81",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/validate-dist.mjs",
+        "src/d"
+      ],
+      "commit": "",
+      "ft": "FT-021",
+      "id": "164864e3690009dcb4eb0cb7",
+      "line": 378,
+      "rcf": "RCF.md",
+      "sentenceSha256": "7c661a3eafa0f31ece9a9335bc41d4190373dbc27fe3ece5078a7b887a864428",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "73dcd0b92c9390ac758ba0e6",
+      "line": 394,
+      "rcf": "RCF.md",
+      "sentenceSha256": "4845cf16d7d7879651da3a9ea78c7edfc0090f2040dd16637be8fab795736fb2",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "b65187913935f45c4b37f9cd",
+      "line": 408,
+      "rcf": "RCF.md",
+      "sentenceSha256": "e1247168b0a46db2441cb765044016dadde8017d6c058b087695c2d1ecca8e8e",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "8433ca1ce94b4278e9fa91ad",
+      "line": 410,
+      "rcf": "RCF.md",
+      "sentenceSha256": "b469ef3d5b1dab2451a71974b8b8caf5c3f5e576c3fe7b1c0bfb7f62b1d60e62",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "1000022c9b6cdeaeac1bd901",
+      "line": 411,
+      "rcf": "RCF.md",
+      "sentenceSha256": "6ab47fda32c1d62e3b37347b5918576c3eae36772d1253d7d4daca42a6a7a21e",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "62c348a4e327657e92e25220",
+      "line": 412,
+      "rcf": "RCF.md",
+      "sentenceSha256": "bd51ea70b7e40f2835d28edb886fff48ad53903483c1634079266c5129c05c05",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "71628a4b201baf8f82632f41",
+      "line": 413,
+      "rcf": "RCF.md",
+      "sentenceSha256": "90514e9f495eaffebea70c9762b00e64eb3bc64311b1870bde0bdb7deb58741e",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        ".github/workflows/source-intake.yml",
+        "package.json",
+        "scripts/validate-workflows.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-017",
+      "id": "b10dd9aa22fadea490f4c094",
+      "line": 422,
+      "rcf": "RCF.md",
+      "sentenceSha256": "dca71e9bfd51aabc4c53501260be2909c0af056a2aeed06c4cbf49128828cb99",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/build-site.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/validate-dist.mjs",
+        "src/404.html"
+      ],
+      "commit": "",
+      "ft": "FT-018",
+      "id": "bb9e613be1fb5c1c196106f5",
+      "line": 423,
+      "rcf": "RCF.md",
+      "sentenceSha256": "cac0900b2a769a11c3d5b517b1847f0ad11b04f796ef28874a114a565b09e937",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/benchmark-indexes.mjs",
+        "scripts/build-site.mjs",
+        "src/app/app.tsx"
+      ],
+      "commit": "",
+      "ft": "FT-019",
+      "id": "218abad20f7e6d12e40d763e",
+      "line": 424,
+      "rcf": "RCF.md",
+      "sentenceSha256": "afc35cb975608968fc2b7c9ab1b2c62caa6470cb07b59cdec2f39d7aa8e03c27",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "f230dd7eacb7041334ddf529",
+      "line": 425,
+      "rcf": "RCF.md",
+      "sentenceSha256": "d9b46f3c21ea550fbe159d17a1af67d16018922acbd24fef031d7b9f4e98547b",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/intake-issue-sources.mjs",
+        "scripts/lib/issue-source-intake.mjs",
+        "scripts/lib/static-books.mjs",
+        "scripts/maintain-egw.mjs",
+        "scripts/validate-dist.mjs"
+      ],
+      "commit": "",
+      "ft": "FT-020",
+      "id": "33b707a371f5b6dcea5e67a2",
+      "line": 426,
+      "rcf": "RCF.md",
+      "sentenceSha256": "00affeb7940ce3d836ecccb6936d41bf8b5f22a5719799d992b26a51a6849bac",
+      "state": "pending",
+      "syncCommit": ""
+    },
+    {
+      "artifacts": [
+        "scripts/import-egw.mjs",
+        "scripts/validate-dist.mjs",
+        "src/d"
+      ],
+      "commit": "",
+      "ft": "FT-021",
+      "id": "22821fb7ed6b17c7723a9c23",
+      "line": 427,
+      "rcf": "RCF.md",
+      "sentenceSha256": "7b5d1d268d41eab9aad24c76cf282b10d317aaf1f4b57c2effb72a018a8a7293",
+      "state": "pending",
+      "syncCommit": ""
+    }
+  ]
+}

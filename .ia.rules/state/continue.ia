@@ -3,7 +3,7 @@
 ## FT-016 — Equalização normativa das TO-DOs do produto
 
 - tipo: `implementacao_normativa`
-- estado: `em_andamento`
+- estado: `concluído`
 - criado_em: `2026-08-02T22:21:15-03:00`
 - origem: `.ia.rules/state/TODO.ia.md`, SHA-256 normalizado `301206ef9f27fe53ab2933a0bbe6f8edf1b2698fbc31199a0b5f93f3f8b91334`
 - autoridade: `RCF.md`
@@ -15,14 +15,23 @@
 ### Etapa 1/2 — Conciliação
 
 - tarefa 1/3: preservar a fonte canônica e decompor as cinco frentes — `concluído`.
-- tarefa 2/3: confrontar RCF, estado real e precedência temporal — `em_andamento`.
+- tarefa 2/3: confrontar RCF, estado real e precedência temporal — `concluído`.
 - tarefa 3/3: resolver sobreposições, conflitos e lacunas no contexto-mestre — `concluído`.
 
 ### Etapa 2/2 — Normatização
 
-- tarefa 1/3: atualizar contratos e precedências no RCF — `pendente`.
-- tarefa 2/3: vincular critérios de aceite às FTs técnicas — `pendente`.
-- tarefa 3/3: validar a fase normativa e interromper antes do código — `pendente`.
+- tarefa 1/3: atualizar contratos e precedências no RCF — `concluído`.
+- tarefa 2/3: vincular critérios de aceite às FTs técnicas — `concluído`.
+- tarefa 3/3: validar a fase normativa e interromper antes do código — `concluído`.
+
+### Resultado normativo
+
+- `RCF.md` equalizado em 66 sentenças implementáveis, todas marcadas `[PENDENTE-CODIGO]` e vinculadas às FT-017 a FT-021 em `.ia.rules/state/traceability/rcf-map.json`.
+- implementação histórica de armazenamento/empacotamento local preservada, porém desativada, desacoplada, segregada e inalcançável pelo fluxo ativo; nenhum PDF, EPUB, ZIP ou 7z PODE persistir no estado ativo.
+- segmentação subordinada a benchmark de ganho líquido; carga definitiva subordinada às quatro frentes técnicas anteriores e a autorização específica.
+- validação: fonte TODO canônica e íntegra; 287 IDs de requisito únicos; 66 marcadores para 66 entradas de mapa; nenhuma entrada aponta linha sem marcador; `git diff --check` sem erro.
+- impedimento de validação global: `npm run agent:verify` encerra em `dist/AGENTS.md ausente`, condição preexistente e alheia ao delta do RCF.
+- próximo_passo: interromper e aguardar autorização humana explícita para iniciar `FT-017`; nenhuma implementação foi executada.
 
 ## FT-017 — Validação estrutural dos workflows
 

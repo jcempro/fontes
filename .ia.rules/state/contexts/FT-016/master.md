@@ -18,7 +18,7 @@
 ## Decisões de equalização
 
 - A correção do workflow precede os canais automatizados, mas não autoriza ingestão nem publicação.
-- O contrato remoto posterior prevalece, no ponto incompatível, sobre regras anteriores que exigiam preservar PDF, EPUB ou contêiner local; compatibilidade histórica permanece apenas fora do fluxo ativo.
+- O contrato remoto posterior prevalece, no ponto incompatível, sobre regras anteriores que exigiam preservar PDF, EPUB ou contêiner local; as implementações históricas permanecem preservadas, porém desativadas, desacopladas, segregadas e fora do fluxo ativo.
 - Identificadores externos são evidência candidata. ID, token, rota, tags e relações canônicas são sempre reatribuídos pelo produto.
 - A segmentação é uma decisão condicionada a benchmark; a norma deve definir o gate e o fallback, sem presumir adoção.
 - A ingestão definitiva é destrutiva para estado anterior e terminal: depende de autorização técnica expressa futura, execução limpa, validação integral e ausência de artefatos editoriais locais proibidos.
@@ -43,3 +43,12 @@
 - ingestão multicanal segura, tolerante sem inferência ambígua e transacional;
 - base final sem PDF, EPUB, ZIP, 7z ou pseudopublicação local;
 - índices, mapas, pesquisa e consumidores regenerados e validados sobre a base definitiva.
+
+## Handoff normativo
+
+- estado: concluído em `2026-08-02` sem alteração de código, workflow, dependência, build, base ou publicação.
+- RCF: 66 sentenças implementáveis equalizadas e vinculadas às FT-017 a FT-021 por marcadores `[PENDENTE-CODIGO]`.
+- preservação confirmada: a implementação histórica de armazenamento/empacotamento local não será eliminada; permanecerá desativada, desacoplada e segregada.
+- validação focal: TODO canônica reconhecida, 287 IDs de requisito únicos, mapa 66/66 coerente e diff sem erro de whitespace.
+- validação global pendente: `agent:verify` exige `dist/AGENTS.md`, ausente antes desta fase e fora do escopo normativo.
+- retomada: iniciar `FT-017` somente após autorização humana explícita; não combinar código de outra FT antes de seus contratos/dependências.

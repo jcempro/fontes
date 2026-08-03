@@ -8,6 +8,8 @@ node_modules/
 !/.ia.rules/state/TODO.ia.md
 !/.ia.rules/state/contexts/
 !/.ia.rules/state/contexts/**
+!/.ia.rules/state/traceability/
+!/.ia.rules/state/traceability/**
 !/.vscode
 !/.github/
 !/.github/workflows/
