@@ -3,7 +3,7 @@
 
   - Contradições aparentes entre TO-DOs DEVEM ser interpretadas, salvo evidência contrária (questione o dev. neste caso), como imprecisão de redação do desenvolvedor e resolvidas por equalização sem perda de intenção, requisito ou nuance.
 
-  - O RCF vigente prevalece e `agents.md` prevalece em absoluto. Toda alteração DEVE aprimorar o projeto, evoluir capacidade e recursos, preservar compatibilidade e força normativa e NÃO PODE introduzir regressão.
+  - O RCF vigente prevalece e `/agents.md` prevalece em absoluto. Toda alteração DEVE aprimorar o projeto, evoluir capacidade e recursos, preservar compatibilidade e força normativa e NÃO PODE introduzir regressão.
 
   - Antes de executar qualquer TO-DO:
     1. ler integralmente todas as TO-DOs e normas aplicáveis;
